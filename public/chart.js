@@ -1,0 +1,1 @@
+// This JS should generate charts for mood reports
