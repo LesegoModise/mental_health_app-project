@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Through The Skull</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- Main entry page... this will be the page where our logo, app name and options for registering will be -->
-    <!-- It will prove the users with a form to register and login -->
-    <!-- There will be a link to the backend for user authentication -->
-</body>
+  <div>
+    
+  </div>
 
+    <div class="container">
+      <h1>Through The Skull</h1>  
+
+        <div id="login-form">
+            <h2>Login</h2>
+            <label for="unique-id">User ID:</label>
+            <input type="text" id="unique-id" required>
+            <button onclick="login()">Login</button>
+            <button onclick="showRegisterForm()">Sign Up</button>
+        </div>
+
+        <div id="register-form" class="hidden">
+            <h2>Register</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <button onclick="register()">Register</button>
+        </div>
+
+        <div id="welcome-message" class="hidden">
+            <h2></h2>
+            <p></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
 </html>
