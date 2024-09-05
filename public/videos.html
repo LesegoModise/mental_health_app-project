@@ -8,6 +8,26 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Face App Video Processor</h1>
+        
+        <div class="video-upload">
+            <input type="file" id="videoUpload" accept="video/*">
+            <button id="startVideo">Start Camera</button>
+        </div>
+    
+        <div class="video-container">
+            <video id="inputVideo" controls></video>
+            <canvas id="overlay" class="overlay"></canvas>
+        </div>
+        
+        <div class="controls">
+            <button id="detectFaces">Detect Faces</button>
+            <button id="applyFilter">Apply Filter</button>
+        </div>
+        
+        <div id="loading" class="loading">Loading models...</div>
+    </div>
     <!-- This page will be used so that users can access motivational videos or resources based on their mood -->
     <!-- They have an option to access other videos or resources based on other moods if they like -->
     <!-- This should automatically display vidoes or other resources recommended based on their mood or entry -->
