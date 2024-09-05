@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal</title>
+    <title>Daily Journal</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="journal.js"></script>
+
 </head>
 
 <body x-data="journalApp">
@@ -18,21 +21,22 @@
             <option value="Emotional">Emotional</option>
             <option value="Fine">Fine</option>
             <option value="Happy">Happy</option>
+            <option value="anxious">Anxious</option>
         </select>
         <button @click="saveMood">Save Mood</button>
-    </div>
 
-    <!-- Display the selected mood -->
-    <div class="mood-display" x-show="mood">
-        <h3>Your Mood: <span x-text="mood"></span></h3>
-    </div>
 
-    <div class="journal-entry">
-        <h2>Your Thoughts</h2>
-        <textarea x-model="entry" placeholder="Write about your day..."></textarea>
-        <button @click="saveEntry">Save Entry</button>
-    </div>
+        <!-- Display the selected mood -->
+        <div class="mood-display" x-show="mood">
+            <h3>Your Mood: <span x-text="mood"></span> </h3>
+        </div>
 
+        <div class="journal-entry">
+            <h2>Your Thoughts</h2>
+            <textarea x-model="entry" placeholder="Write about your day..."></textarea>
+            <button @click="saveEntry">Save Entry</button>
+        </div>
+    </div>
 </body>
 
 </html>
