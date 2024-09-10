@@ -1,44 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="mentalHealth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Through The Skull</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     
-  </div>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+    <script src="./welcome.js"></script>
 
-    <div class="container">
-      <h1>Through The Skull</h1>  
+</head>
 
-        <div id="login-form">
-            <h2>Login</h2>
-            <label for="unique-id">User ID:</label>
-            <input type="text" id="unique-id" required>
-            <button onclick="login()">Login</button>
-            <button onclick="showRegisterForm()">Sign Up</button>
+<body>
+
+    <div x-show="showSplash" class="splash-screen">
+        <img src="./through-the-skull-high-resolution-logo-white-transparent.png" alt="Through The Skull Logo" class="logo img-responsive center-block">
+        <button @click="showSplash = false" class="next-btn btn btn-primary">></button>
+    </div>
+
+    <div x-show="!showSplash && !isRegistering" class="welcome-screen"></div>
+        <div class="left-side">
+            <img src="./through-the-skull-high-resolution-logo-white-transparent.png" alt="App Logo" class="logo">
+            <form id="login-form" @submit.prevent="login">
+                <input type="text" id="username" x-model="loginData.username" placeholder="Username/Email" class="form-control">
+                <input type="password" id="password" x-model="loginData.password" placeholder="Password" class="form-control">
+                <a href="#" @click.prevent="showForgotPasswordForm" class="forgot-password">Forgotten password?</a>
+                <div class="remember-checkbox">
+                    <input type="checkbox" id="remember-me" x-model="rememberMe">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <button @click.prevent="showRegisterForm" class="btn btn-secondary">Sign Up</button>
+                <button class="btn btn-google">Sign Up with Google</button>
+                <select id="language" x-model="selectedLanguage" @change="changeLanguage" class="form-control">
+                    <option value="en">English</option>
+                    <option value="afri">Afrikaans</option>
+                    <option value="zulu">isiZulu</option>
+                    <option value="tswana">seTswana</option>
+                </select>
+            </form>
+        </div>
+        <div class="right-side">
+            <img src="./intro.jpg" alt="Welcome Image" class="welcome-image">
+            <h1>WELCOME</h1>
+        </div>
+    </div>
+
+    <div x-show="isRegistering" class="register-screen"></div>
+        <div class="left-side">
+            <img src="assets/logo.png" alt="App Logo" class="logo">
+            <form id="register-form" @submit.prevent="register">
+                <input type="text" id="full-name" x-model="registerData.fullName" placeholder="Full Name" class="form-control">
+                <input type="text" id="surname" x-model="registerData.surname" placeholder="Surname" class="form-control">
+                <input type="text" id="username" x-model="registerData.username" placeholder="Preferred Username" class="form-control">
+                <input type="email" id="email" x-model="registerData.email" placeholder="Email Address" class="form-control">
+                <input type="password" id="new-password" x-model="registerData.password" placeholder="New Password" class="form-control">
+                <input type="password" id="confirm-password" x-model="registerData.confirmPassword" placeholder="Confirm Password" class="form-control">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <button @click.prevent="showSplash = true" class="btn btn-secondary">Back</button>
+            </form>
+        </div>
+        <div class="right-side">
+            <img src="assets/register-image.png" alt="Register Image" class="register-image">
+            <h1>REGISTER</h1>
+        </div>
+    </div>
+
+    <!-- <section class="splash-screen text-center" x-show="showSplash" x-transition>
+        <img src="./through-the-skull-high-resolution-logo-white-transparent.png" alt="Through The Skull Logo"
+            class="splash-logo img-responsive center-block">
+        <button class="next-btn btn btn-primary" @click="showSplash = false">></button>
+    </section> -->
+
+
+    <!-- <div class="container" x-show="!showSplash" x-transition>
+
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <div>
+                    <img src="./through-the-skull-high-resolution-logo-white-transparent.png" alt="Logo"
+                        class="img-responsive center-block" style="width: 150px;">
+                    <div id="login-form" x-show="!isRegistering">
+                        <h3>Login</h3>
+                        <div class="form-group">
+                            <label for="username">Enter Username/Email...</label>
+                            <input type="text" id="username" x-model="loginData.username" class="form-control" required>
+                        </div>
+                        <div class="form-group"></div>
+                        <label for="password">Enter Password...</label>
+                        <input type="password" id="password" x-model="loginData.password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="remember" x-model="rememberMe"> Remember
+                    </div>
+                    <a href="#">Forgot Password</a>
+                    <br>
+                    <button class="btn btn-success" @click="login()">Login</button>
+                    <button class="btn btn-primary" @click="isRegistering = true">Sign Up</button>
+                </div>
+
+                <div id="register-form" x-show="isRegistering"></div>
+                <h3>Register</h3>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" x-model="registerData.fullName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Preferred Username:</label>
+                    <input type="text" id="username" x-model="registerData.username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" x-model="registerData.email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" x-model="registerData.password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" x-model="registerData.confirmPassword"
+                        class="form-control" required>
+                </div>
+                <button class="btn btn-success" @click="register()">Register</button>
+                <button class="btn btn-danger" @click="isRegistering = false">Cancel</button>
+                <button class="btn btn-primary">Sign Up with Google</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 text-center"></div>
+    <img src="your-welcome-image.jpg" alt="Welcome Image" class="img-responsive center-block" style="height: 300px;">
+    <h2>WELCOME</h2>
+    <div>
+        <label for="language">Choose Language:</label>
+        <select id="language" x-model="selectedLanguage" class="form-control">
+            <option value="en">English</option>
+            <option value="afri">Afrikaans</option>
+            <option value="zulu">isiZulu</option>
+            <option value="tswana">seTswana</option>
+        </select>
+    </div>
+    </div>
+    </div> -->
+
+    <!-- <div class="text-center">Through The Skull</div>  
+
+        <div id="login-form" class="text-center">
+            <div>Login</div>
+            <div class="form-group">
+                <label for="unique-id">User ID:</label>
+                <input type="text" id="unique-id" class="form-control" required>
+            </div>
+            <button class="btn btn-success" onclick="login()">Login</button>
+            <button class="btn btn-primary" onclick="showRegisterForm()">Sign Up</button>
         </div>
 
-        <div id="register-form" class="hidden">
-            <h2>Register</h2>
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-            <button onclick="register()">Register</button>
+        <div id="register-form" class="hidden text-center">
+            <div>Register</div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group"></div>
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" class="form-control" required>
+            </div>
+            <div class="form-group"></div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" class="form-control" required>
+            </div>
+            <button class="btn btn-success" onclick="register()">Register</button>
         </div>
 
-        <div id="welcome-message" class="hidden">
+        <div id="welcome-message" class="hidden text-center">
             <h2></h2>
             <p></p>
         </div>
-    </div>
-    
-    <script src="script.js"></script>
+    </div> -->
+
 </body>
+
 </html>
