@@ -1,102 +1,265 @@
-/* body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-} */
-
-/* .splash-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: url(./Splash\ Screen\ Background.jpg);
-    background-size: cover;
-    background-position: center;
+.splash-screen {
     width: 100%;
     height: 100vh;
+    overflow: hidden;
+    background-color: black;
     position: relative;
 }
 
-.splash-logo {
-    width: 200px;
-    height: auto;
-    margin-bottom: 20px;
+.splash-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.next-btn {
+.logo-container {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 40px;
-    background-color: grey;
-}
-
-.hidden {
-    display: none;
-}
-
-.container {
-    background-color: white;
-} */
-
-
-/* Basic styles for splash screen */
-.splash-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url(./Splash\ Screen\ Background.jpg) no-repeat center center fixed;
-    background-size: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
 }
 
 .logo {
-    max-width: 200px;
+    max-width: 70%;
+    margin-bottom: 80px;
+    margin-top: 80px;
 }
 
-.next-btn {
+.arrow {
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: 20%;
+    transform: translateX(0);
+    background-color: rgba(255, 255, 255, 0.604);
+    padding: 20px 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 24px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Basic styles for welcome screen */
-.welcome-screen {
-    display: flex;
-    justify-content: space-between;
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-icon {
+    font-size: 2rem;
+    color: black;
+}
+
+.login, .register {
+    background-image: url(./welcome-background.jpg);
+    background-size: cover;
+    width: 100%;
     height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    position: relative;
 }
 
-.left-side {
-    width: 50%;
+.welcome {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section {
+    background-color: transparent;
     padding: 20px;
 }
 
-.right-side {
-    width: 50%;
-    background: url(./Cover.png) no-repeat center center;
-    background-size: cover;
+.img-fluid-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    background-color: rgb(208, 208, 208);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 150px auto;
+    color: black;
+}
+
+input {
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+.card-body {
+    line-height: 1.5;
+}
+
+button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.d-flex {
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex-register {
+    display: block;
     text-align: center;
-    color: white;
+    padding: 0.5em;
+}
+
+.d-flex-forgot {
+    display: flex;
+}
+
+#forgotPassword {
+    color: black;
+}
+
+.alert {
+    margin: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    text-align: center;
+}
+
+.text-muted {
+    color: black;
+}
+
+
+.form-container-registration {
+    background-color: rgb(208, 208, 208);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    color: black;
+}
+
+.google {
+    padding-top: 0.5em;
+}
+
+.dashboard {
+    background-image: url(./Cover.png);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.dashboard-background {
+    background-color: white;
+    padding: 20px;   
+    margin: 50px;    
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-background {
+    /* display: flex; */
+    background-image: url(./dashboard.jpg);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+
+}
+
+.dashboard-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
-.welcome-image {
-    max-width: 100%;
+.logo-dashboard {
+    width: 100px;
+    margin-bottom: 20px;
 }
 
-/* Basic styles for register screen */
-.register-screen {
+.buttons {
     display: flex;
-    justify-content: space-between;
-    height: 100vh;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.register-image {
-    max-width: 100%;
+.selection {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
 }
+
+.profile-icon-img {
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.danger-selection {
+    background-color: red;
+    color: white;
+}
+
+.journal-background, .emergency-background {
+    background-image: url(./Cover.png);
+    
+}
+
+.journal-content {
+    background-color: white;
+    padding: 20px;   
+    margin: 50px;    
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.emergency-content {
+    background-color: white;
+    padding: 20px;   
+    margin: 50px;    
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+

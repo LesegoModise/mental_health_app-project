@@ -5,34 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
 </head>
 
-<body x-data="journalApp">
-    <h1>Daily Journal</h1>
-    <div id="journalForm" class="form-section">
-        <label for="moodSelector">How are you feeling today?</label>
-        <select id="moodSelector" x-model="mood">
-            <option value="">Please Select</option>
-            <option value="Sad">Sad</option>
-            <option value="Angry">Angry</option>
-            <option value="Emotional">Emotional</option>
-            <option value="Fine">Fine</option>
-            <option value="Happy">Happy</option>
-        </select>
-        <button @click="saveMood">Save Mood</button>
-    </div>
+<body x-data="journalApp" class="journal-background">
 
-    <!-- Display the selected mood -->
-    <div class="mood-display" x-show="mood">
-        <h3>Your Mood: <span x-text="mood"></span></h3>
-    </div>
+    <section class="container journal-content">
+        <h1>Daily Journal</h1>
+        <div id="journalForm" class="form-section">
+            <label for="moodSelector">How are you feeling today?</label>
+            <select id="moodSelector" x-model="mood">
+                <option value="">Please Select</option>
+                <option value="Sad">Sad</option>
+                <option value="Angry">Angry</option>
+                <option value="Emotional">Emotional</option>
+                <option value="Fine">Fine</option>
+                <option value="Happy">Happy</option>
+            </select>
+            <button @click="saveMood">Save Mood</button>
+        </div>
 
-    <div class="journal-entry">
-        <h2>Your Thoughts</h2>
-        <textarea x-model="entry" placeholder="Write about your day..."></textarea>
-        <button @click="saveEntry">Save Entry</button>
-    </div>
+        <!-- Display the selected mood -->
+        <div class="mood-display" x-show="mood">
+            <h3>Your Mood: <span x-text="mood"></span></h3>
+        </div>
 
+        <div class="journal-entry">
+            <h2>Your Thoughts</h2>
+            <textarea x-model="entry" placeholder="Write about your day..."></textarea>
+            <button @click="saveEntry">Save Entry</button>
+        </div>
+    </section>
+
+
+    <footer style="text-align: center; color: black;"></footer>
+    <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

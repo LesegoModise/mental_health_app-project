@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script src="./registration.js"></script>
+
+</head>
+
+<body class="register" x-data="register">
+
+    <div x-show="successMessage" class="alert alert-success mt-3" x-text="successMessage"></div>
+
+    <div x-show="Object.keys(errors).length > 0" class="alert alert-danger mt-3">
+        <template x-for="(error, field) in errors">
+            <p x-text="error"></p>
+        </template>
+    </div>
+
+    <div class="container vh-100 d-flex-register align-items-center justify-content-center">
+        <div class="card form-container-registration">
+
+            <div class="card-header text-center">
+                <img src="./logo.png" alt="Logo" class="img-fluid-logo">
+            </div>
+            <div class="card-body">
+                <form id="registerForm" @submit.prevent="submit">
+                    <p>Already have an account? <a href="#" id="login" class="text-muted" @click="back">LOGIN</a>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" x-model="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Surname</label>
+                        <input type="text" class="form-control" id="surname" x-model="surname"
+                            placeholder="Enter your surname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" x-model="username"
+                            placeholder="Enter a username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" x-model="email"
+                            placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" x-model="password"
+                            placeholder="Enter a password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" x-model="confirmPassword"
+                            placeholder="Confirm your password">
+                    </div>
+                </form>
+
+            </div>
+            <div class="google">
+                <button type="submit" class="btn btn-primary" @click="submit">REGISTER</button>
+                <p></p>
+                <button type="button" class="btn btn-secondary">SIGN UP WITH GOOGLE</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <footer style="text-align: center; color: black;"></footer>
+    <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
