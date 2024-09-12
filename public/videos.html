@@ -8,6 +8,34 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Motivational Videos</h1>
+        <!-- Video List Section -->
+        <div class="video-list" id="videoList">
+            <!-- Videos will be dynamically loaded here -->
+        </div>
+        <!-- Video Player Section -->
+        <div class="video-player" id="videoPlayerContainer">
+            <video id="videoPlayer" controls></video>
+            <h3 id="videoTitle"></h3>
+        </div>
+    </div>
+
+    <div class="mindfulness-section">
+        <h2>Mindfulness & Meditation</h2>
+        <div id="mindfulnessVideos">
+            <!-- Add video thumbnails dynamically here -->
+        </div>
+        <div class="breathing-exercises">
+            <h3>Breathing Exercises</h3>
+            <ul>
+                <li><button onclick="startBreathingExercise('4-7-8')">4-7-8 Breathing</button></li>
+                <li><button onclick="startBreathingExercise('box')">Box Breathing</button></li>
+                <li><button onclick="startBreathingExercise('deep')">Deep Belly Breathing</button></li>
+            </ul>
+        </div>
+    
+    </div>
     <!-- This page will be used so that users can access motivational videos or resources based on their mood -->
     <!-- They have an option to access other videos or resources based on other moods if they like -->
     <!-- This should automatically display vidoes or other resources recommended based on their mood or entry -->
