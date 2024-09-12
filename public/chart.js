@@ -5,7 +5,20 @@ function journalApp() {
         entry: '',
         currentPrompt: 'What’s on your mind today?',
         moodData: JSON.parse(localStorage.getItem('moodData')) || [], // Retrieve stored mood data
+        chart: null,
 
+        //fetch mood data from the backend
+        fetchMoods() {
+            axios.get('http://localhost:../api/moods')
+            .then(response => {
+                this.moodData = response.data;
+                this.updateChart();
+            })
+            .catch(error => {
+                console.error('Error fetching moods:', error);
+            });
+        },
+        
         // Method to save journal entry and selected mood
         saveEntry() {
             if (this.selectedMood) {
@@ -13,6 +26,7 @@ function journalApp() {
                     mood: this.selectedMood,
                     date: new Date().toLocaleDateString()
                 });
+                axios.post('http://localhost:.../api/moods', moodEntry)
                 localStorage.setItem('moodData', JSON.stringify(this.moodData)); // Save to localStorage
                 this.updateChart(); // Update the chart with the new mood data
                 alert('Entry saved!');
