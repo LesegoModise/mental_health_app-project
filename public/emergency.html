@@ -21,47 +21,50 @@
 
     <section class="container emergency-content">
 
-        <header>
-            <h1>Emergency Support</h1>
-            <p>Our top priority is your well-being. We are here to support you if you're feeling overwhelmed.</p>
-        </header>
+        <div class="emergency-info">
 
-        <main x-data="emergencyApp">
-            <div>
-                <h2>Immediate Support</h2>
-                <p>Kindly reach out to a mental health expert or a reliable someone right away if you are going through
-                    a
-                    mental health crisis.</p>
-                <ul>
-                    <li><strong>Emergency Hotline:</strong> 011 098 6789</li>
-                    <li><strong>Crisis Text Line:</strong> Text HELP to 56478</li>
-                </ul>
-            </div>
+            <header>
+                <div class="heading">Emergency Support</div>
+                <p>Our top priority is your well-being. We are here to support you if you're feeling overwhelmed.</p>
+            </header>
 
-            <div
-                x-data="{ tips: ['Take deep breaths', 'Try meditation or mindfulness', 'Engage in physical activity', 'Connect with friends or family', 'Write down your thoughts'] }">
-                <h2>Self-Care Tips</h2>
-                <button @click="showTips = !showTips">Show Self-Care Tips</button>
-                <ul x-show="showTips">
-                    <template x-for="tip in tips" :key="tip">
-                        <li x-text="tip"></li>
-                    </template>
-                </ul>
-            </div>
+            <main x-data="emergencyApp">
+                <div>
+                    <div class="subheading-emergency">Immediate Support</div>
+                    <p>Kindly reach out to a mental health expert or a reliable someone right away if you are going
+                        through
+                        a
+                        mental health crisis.</p>
+                    <ul>
+                        <li><strong>Emergency Hotline:</strong> 011 098 6789</li>
+                        <li><strong>Crisis Text Line:</strong> Text HELP to 56478</li>
+                    </ul>
+                </div>
+
+                <div
+                    x-data="{ tips: ['Take deep breaths', 'Try meditation or mindfulness', 'Engage in physical activity', 'Connect with friends or family', 'Write down your thoughts'] }">
+                    <div class="subheading-emergency">Self-Care Tips</div>
+                    <button @click="showTips = !showTips">Show Self-Care Tips</button>
+                    <ul x-show="showTips">
+                        <template x-for="tip in tips" :key="tip">
+                            <li x-text="tip"></li>
+                        </template>
+                    </ul>
+                </div>
 
 
-            <div>
-                <h2>Contact Us</h2>
-                <p>Please get in touch with our support team if you need to chat to someone about your mental health at
-                    work:</p>
-                <address>
-                    <p>Email: <a href="mailto:support@throughtheSkull.com">support@throughtheSkull.com</a></p>
-                    <p>Phone: 011 098 6789</p>
-                </address>
-            </div>
-        </main>
-
-        
+                <div>
+                    <div class="subheading-emergency">Contact Us</div>
+                    <p>Please get in touch with our support team if you need to chat to someone about your mental health
+                        at
+                        work:</p>
+                    <address>
+                        <p>Email: <a href="mailto:support@throughtheSkull.com">support@throughtheSkull.com</a></p>
+                        <p>Phone: 011 098 6789</p>
+                    </address>
+                </div>
+            </main>
+        </div>
     </section>
 
     <footer style="text-align: center; color: black;">

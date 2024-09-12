@@ -18,6 +18,9 @@ document.addEventListener('alpine:init', () => {
                     username: 'Invalid username or password',
                     password: 'Invalid username or password'
                 };
+                setTimeout(() => {
+                    this.errors = {};
+                }, 5000);
             }
         },
 
