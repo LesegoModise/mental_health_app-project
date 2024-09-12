@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Journal Report - Eric Nkosi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <div class="report-container" x-data="{ showReport: false, showRecommendations: false }">
+        <!-- Button to show the report -->
+        <button x-show="!showReport" @click="showReport = true" class="show-report-button">
+            Show Weekly Report
+        </button>
+
+        <!-- Report container -->
+        <div x-show="showReport" x-transition class="container">
+            <!-- Close button -->
+            <button @click="showReport = false" class="close-report-button">
+                Close Report
+            </button>
+
+            <div class="header">
+                <h1>Weekly Journal Report</h1>
+                <p>User: Eric Nkosi | Report Period: September 1 - September 7, 2024</p>
+            </div>
+            <br><br>
+
+            <div class="section" id="section1">
+                <h2 class="section-title">Daily Journals Overview</h2>
+                <table class="entry-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Entry Time</th>
+                            <th>Mood</th>
+                            <th>Summary of Entry</th>
+                            <th>Mood Rating (1-10)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>September 1, 2024</td>
+                            <td>09:00 AM</td>
+                            <td>Happy</td>
+                            <td>Had a productive morning and felt energized.</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>September 2, 2024</td>
+                            <td>08:45 PM</td>
+                            <td>Anxious</td>
+                            <td>Felt overwhelmed with work responsibilities.</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>September 3, 2024</td>
+                            <td>07:30 PM</td>
+                            <td>Calm</td>
+                            <td>Enjoyed a peaceful evening walk and meditation.</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>September 4, 2024</td>
+                            <td>10:15 AM</td>
+                            <td>Stressed</td>
+                            <td>Had a difficult meeting that left me feeling drained.</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>September 5, 2024</td>
+                            <td>06:00 PM</td>
+                            <td>Content</td>
+                            <td>Spent time with friends, which lifted my mood significantly.</td>
+                            <td>7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br><br>
+
+            <div class="section" id="section2">
+                <h2 class="section-title">Mood Analysis</h2>
+                <p><strong>Average Mood Rating:</strong> 5.8</p>
+                <p><strong>Most Frequent Mood:</strong> Anxious</p>
+                <p><strong>Mood Variation:</strong> Noticeable ups and downs with stress mid-week.</p>
+                <p><strong>Peak Mood Days:</strong> September 1, 2024</p>
+                <p><strong>Low Mood Days:</strong> September 4, 2024</p>
+            </div>
+
+            <br><br>
+
+
+            <div class="section" id="section3">
+                <h2 class="section-title">Highlight Entries</h2>
+                <div class="highlight-entry">
+                    <p><strong>Positive Entry - September 1:</strong> Eric felt happy and productive, had a great start to the week with a morning run.</p>
+                </div>
+                <div class="highlight-entry">
+                    <p><strong>Challenging Entry - September 4:</strong> Eric felt stressed after a difficult meeting, indicating a need for better stress management techniques.</p>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="section" id="section4">
+                <h2 class="section-title">Activity Summary</h2>
+                <p><strong>Completed Activities:</strong> 5 journaling sessions, 2 breathing exercises.</p>
+                <p><strong>Usage Frequency:</strong> Logged in daily.</p>
+                <p><strong>Time Spent on App:</strong> Average 15 minutes per day.</p>
+            </div>
+
+            <br><br>
+
+            <div class="section" id="section5">
+                
+                
+                <!-- Button to show additional recommendations -->
+                <button @click="showRecommendations = !showRecommendations" class="show-additional-recommendations-button">
+                    Show Recommendations for Anxious Mood
+                </button>
+
+                <p> Eric engage more in relaxation techniques, especially on stressful days, and consider setting boundaries for work-related tasks.</p>
+
+                <!-- Additional Recommendations Section -->
+                <div x-show="showRecommendations" x-transition class="additional-recommendations">
+                    <h3>Recommendations for Managing Anxiety</h3>
+                    <div class="recommendations-flex-container">
+                        <div class="recommendation-item">
+                            <img src="Anxiety can be Overwhelming.jpg" alt="Meditation" class="recommendation-image">
+                            <p>Practice meditation regularly to help manage anxiety.</p>
+                        </div>
+                        <div class="recommendation-item">
+                            <img src="Breathing exercises for stress and anxiety.jpg" alt="Exercise" class="recommendation-image">
+                            <p>Engage in regular physical exercise to reduce anxiety levels.</p>
+                        </div>
+                        <div class="recommendation-item">
+                            <p>Watch these YouTube videos to learn more about managing anxiety:</p>
+                            <ul>
+                                <li><a href="https://youtu.be/UR6ZUJsnV1E?si=UOY0sddj2iP2fEqI" target="_blank">Understanding Anxiety</a></li>
+                                
+                                
+                                <li><a href="https://youtu.be/lrhPTqholcc?si=vcz4TTbSxNYWQUpy" target="_blank">Anxiety Reduction Techniques</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
