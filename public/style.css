@@ -1,0 +1,272 @@
+.splash-screen {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    position: relative;
+}
+
+.splash-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    max-width: 70%;
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+
+.arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 20%;
+    transform: translateX(0);
+    background-color: rgba(255, 255, 255, 0.604);
+    padding: 20px 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-icon {
+    font-size: 2rem;
+    color: black;
+}
+
+.login, .register {
+    background-image: url(./welcome-background.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    position: relative;
+}
+
+.welcome {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section {
+    background-color: transparent;
+    padding: 20px;
+}
+
+.img-fluid-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    background-color: rgb(208, 208, 208);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 150px auto;
+    color: black;
+}
+
+input {
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+.card-body {
+    line-height: 1.5;
+}
+
+button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.d-flex {
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex-register {
+    display: block;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.d-flex-forgot {
+    display: flex;
+}
+
+#forgotPassword {
+    color: black;
+}
+
+.alert {
+    margin: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    text-align: center;
+}
+
+.text-muted {
+    color: black;
+}
+
+
+.form-container-registration {
+    background-color: rgb(208, 208, 208);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    color: black;
+}
+
+.google {
+    padding-top: 0.5em;
+}
+
+.dashboard {
+    background-image: url(./Cover.png);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.dashboard-background {
+    background-color: white;
+    padding: 20px;   
+    margin: 50px;    
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-background {
+    /* display: flex; */
+    background-image: url(./dashboard.jpg);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-dashboard {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.selection {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.profile-icon-img {
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.danger-selection {
+    background-color: red;
+    color: white;
+}
+
+.journal-background, .emergency-background, .consent-background {
+    background-image: url(./Cover.png);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.journal-content, .emergency-content, .consent-content {
+    background-color: white;
+    padding: 20px;   
+    margin: 50px;
+    width: 94%;
+    height: 80vh;    
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.consent-cover {
+    background-color: rgb(208, 208, 208);
+    /* padding: 20px; */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    /* margin: 150px auto; */
+    color: black;
+    height: 68vh;    
+
+}
+
+
+

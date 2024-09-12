@@ -2,10 +2,11 @@ import express from 'express';
 import sqlite3 from 'sqlite3';
 import cors from 'cors';
 
-
+const PORT = process.env.PORT || 4011;
 
 // Middleware
 const app = express();
+app.use(express.static('public'))
 app.use(cors());
 app.use(express.json());
 
@@ -52,10 +53,6 @@ app.get('/api/moods/counts', (req, res) => {
   });
 });
 
-// app.listen(port, () => {
-//   console.log(`Server running at http://localhost:${port}`);
-// });
-
 
 
 app.post('/journal', (req, res) => {
@@ -97,3 +94,10 @@ app.get('/journal/:userId', (req, res) => {
     const entries = journalEntries[userId] || [];
     res.json(entries);
 });
+
+
+
+
+app.listen(PORT, function () {
+    console.log(`Server started http://localhost:${PORT}`);
+})
