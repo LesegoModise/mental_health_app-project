@@ -31,6 +31,10 @@ document.addEventListener('alpine:init', () => {
             window.location.href = './journal.html';
         },
 
+        navigateToReport() {
+            window.location.href = './report.html';
+        },
+
         navigateToRecommendation() {
             window.location.href = './recommendation.html';
         },
