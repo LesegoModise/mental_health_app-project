@@ -3,9 +3,9 @@
 // It will also provide feedback to the user based on the analysis (suggest videos, motivational content or recommend a therapist)
 
 
-document.getElementById('analyzeBtn').addEventListener('click', async function() {
+document.getElementById('analyzeBtn').addEventListener('click', async function () {
     const userInput = document.getElementById('userInput').value;
-    
+
     // Make sure to replace 'your-ml-api-url' with the actual API URL where your model is deployed
     const apiUrl = 'https://your-ml-api-url/analyze';
 
@@ -23,5 +23,26 @@ document.getElementById('analyzeBtn').addEventListener('click', async function()
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('result').innerText = 'Error in analyzing text.';
+    }
+});
+document.getElementById('userInput').addEventListener('input', async function () {
+    const userInput = document.getElementById('userInput').value;
+
+    // Similar fetch request to your API for real-time feedback
+    if (userInput) {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: userInput })
+            });
+
+            const result = await response.json();
+            document.getElementById('result').innerText = `Real-time Analysis: ${result.prediction}`;
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 });
