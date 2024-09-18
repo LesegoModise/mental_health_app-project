@@ -525,3 +525,9 @@ label {
     /* overflow: hidden; */
     position: relative;
 }
+
+.mood-button {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 10px;
+}
