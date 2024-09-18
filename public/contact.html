@@ -22,7 +22,118 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="mood.js"></script>
 </head>
+<style>
+    /* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
 
+/* Profile card styling */
+.profile-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Profile header styling */
+.profile-header h1 {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Specialist title styling */
+.profile-header h2 {
+    font-size: 1.2em;
+    color: #6c757d;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+/* About client section styling */
+.about-client {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.about-client p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #343a40;
+}
+
+/* Contact information styling */
+.contact-info h3,
+.practice-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.contact-info p a,
+.practice-info p {
+    font-size: 1.1em;
+    color: #495057;
+    text-decoration: none;
+}
+
+.contact-info p a:hover {
+    text-decoration: underline;
+}
+
+/* Practice information styling */
+.practice-info p {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    color: #495057;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* Responsive styling for mobile */
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 15px;
+    }
+
+    .profile-header h1 {
+        font-size: 2em;
+    }
+
+    .profile-header h2 {
+        font-size: 1em;
+    }
+
+    .contact-info h3,
+    .practice-info h3 {
+        font-size: 1.3em;
+    }
+
+    .about-client p {
+        font-size: 1em;
+    }
+}
+
+</style>
 <body>
 
     <div class="profile-card">
@@ -52,7 +163,7 @@
         </div>
 
         <div class="practice-info">
-            <h3>My Practice at a Pretoria</h3>
+            <h3>My Practice is at Pretoria</h3>
             <p>Available both in-person and online</p>
             <p>Address: 123 Main Street, Hatfield, Pretoria, 0028</p>
             <p><strong>Fee:</strong> R500 Per Session</p>

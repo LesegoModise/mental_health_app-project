@@ -1,9 +1,18 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('moodTracker', () => ({
-        return: {
             mood: '',
             status: '',
             userId: '',
+            // moodData: JSON.parse(localStorage.getItem('moodData')) || [],
+    
+       
+        init() {
+            // Load saved mood from localStorage
+            const savedMood = localStorage.getItem('userMood');
+            if (savedMood) {
+                // this.mood = savedMood;
+                // this.status = `Previously recorded mood: ${savedMood}`;
+            }
         },
         
         submitMood(mood) {
@@ -20,11 +29,11 @@ document.addEventListener('alpine:init', () => {
                 userId: this.userId, 
             })
                 .then(response => {
-                    // Update status with success message
+                    localStorage.setItem('userMood', mood);
                     this.status = `Mood recorded: ${mood}`;
+                    // this.mood = mood;
                 })
                 .catch(error => {
-                    // Handle error and update status
                     console.error('Error submitting mood:', error);
                     this.status = 'Error recording mood. Please try again.';
                 });
