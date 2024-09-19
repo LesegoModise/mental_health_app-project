@@ -9,15 +9,6 @@ document.addEventListener('alpine:init', () => {
 
         init() {
             this.loadEntries();
-            function journalApp() {
-                return {
-                  entry: '',
-                  saveEntry() {
-                    // Save the journal entry to the server or local storage
-                    alert('Entry saved!');
-                  }
-                };
-              }
         },
 
         saveMood() {

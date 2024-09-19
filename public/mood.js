@@ -1,38 +1,23 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('moodTracker', () => ({
-            mood: '',
-            status: '',
-            userId: '',
-            saveMood: '',
-            // moodData: JSON.parse(localStorage.getItem('moodData')) || [],
-    
-       
-        init() {
-            // Load saved mood from localStorage
-            const saveMood = localStorage.getItem('saveMood');
-            function saveMood(mood) {
-                if (mood) {
-                  localStorage.setItem('selectedMood', mood);
-                  alert('Mood saved! Go to your journal.');
-                  window.location.href = "journal.html"; // Redirect to journal page
-                } else {
-                  alert('Please select a mood!');
-                }
-              }
-        },
-        
-        submitMood(mood) {
-            if (!mood) {
+        mood: '',
+        status: '',
+        status: '',
+        submitMood() {
+            if (!this.mood) {
                 this.status = 'Please select a mood!';
                 return;
             }
 
-            this.status = 'Submitting your mood...';
+            // Save mood to localStorage
+            localStorage.setItem('selectedMood', this.mood);
+            this.status = `Mood saved: ${this.mood}`;
+            // Redirect to journal.html
+            window.location.href = 'journal.html';
 
-            
             axios.post('/api/moods', {
                 mood: mood,
-                userId: this.userId, 
+                userId: this.userId,
             })
                 .then(response => {
                     localStorage.setItem('userMood', mood);
