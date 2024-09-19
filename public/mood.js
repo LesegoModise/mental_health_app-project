@@ -1,30 +1,30 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('moodTracker', () => ({
-        return: {
-            mood: '',
-            status: '',
-            userId: '',
-        },
-        
-        submitMood(mood) {
-            if (!mood) {
+        mood: '',
+        status: '',
+        status: '',
+        submitMood() {
+            if (!this.mood) {
                 this.status = 'Please select a mood!';
                 return;
             }
 
-            this.status = 'Submitting your mood...';
+            // Save mood to localStorage
+            localStorage.setItem('selectedMood', this.mood);
+            this.status = `Mood saved: ${this.mood}`;
+            // Redirect to journal.html
+            window.location.href = 'journal.html';
 
-            
             axios.post('/api/moods', {
                 mood: mood,
-                userId: this.userId, 
+                userId: this.userId,
             })
                 .then(response => {
-                    // Update status with success message
+                    localStorage.setItem('userMood', mood);
                     this.status = `Mood recorded: ${mood}`;
+                    // this.mood = mood;
                 })
                 .catch(error => {
-                    // Handle error and update status
                     console.error('Error submitting mood:', error);
                     this.status = 'Error recording mood. Please try again.';
                 });

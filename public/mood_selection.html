@@ -20,10 +20,9 @@
 
 </head>
 
-<body>
-    <div x-data="moodTracker()">
+<body x-data="moodTracker" class="journal-background">
+    <section class="container journal-content">
         <h1>Select Your Mood</h1>
-
         <label for="moodSelector">How are you feeling today?</label>
         <select id="moodSelector" x-model="mood">
             <option value="">Please Select</option>
@@ -34,12 +33,12 @@
             <option value="happy">😊 Happy</option>
             <option value="anxious">😰 Anxious</option>
         </select>
-
         <button class="btn btn-primary" @click="submitMood(mood)">Save Mood</button>
-
-        <p id="status" x-text="status"></p>
-    </div>
-
+        <p x-text="status"></p>
+    </section>
+    <footer style="text-align: center; color: black;"></footer>
+    <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
