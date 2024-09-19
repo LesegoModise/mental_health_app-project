@@ -3,16 +3,22 @@ document.addEventListener('alpine:init', () => {
             mood: '',
             status: '',
             userId: '',
+            saveMood: '',
             // moodData: JSON.parse(localStorage.getItem('moodData')) || [],
     
        
         init() {
             // Load saved mood from localStorage
-            const savedMood = localStorage.getItem('userMood');
-            if (savedMood) {
-                // this.mood = savedMood;
-                // this.status = `Previously recorded mood: ${savedMood}`;
-            }
+            const saveMood = localStorage.getItem('saveMood');
+            function saveMood(mood) {
+                if (mood) {
+                  localStorage.setItem('selectedMood', mood);
+                  alert('Mood saved! Go to your journal.');
+                  window.location.href = "journal.html"; // Redirect to journal page
+                } else {
+                  alert('Please select a mood!');
+                }
+              }
         },
         
         submitMood(mood) {

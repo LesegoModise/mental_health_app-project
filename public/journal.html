@@ -31,8 +31,8 @@
 
 
                 <!-- Display the selected mood -->
-                <div class="mood-display" x-show="mood">
-                    <div class="subheading">Your Mood: <span x-text="mood"></span> </div class="subheading">
+                <div class="mood-display" x-data="{ mood: localStorage.getItem('selectedMood') }">
+                    <div class="subheading">Your Mood: <span x-text="mood"></span></div>
                 </div>
 
                 <div class="journal-entry">
