@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener('alpine:init', () => {
     Alpine.data('journalApp', () => ({
         moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy'],
@@ -93,6 +92,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
-=======
-// This JS should generate charts for mood reports
->>>>>>> acb31eea7895971cb4d06ed2e0a384196552b8fc
+
