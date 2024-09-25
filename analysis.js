@@ -1,4 +1,4 @@
-document.getElementById('analyzeBtn').addEventListener('click', async function () {
+.document.getElementById('analyzeBtn').addEventListener('click', async function () {
 
     // Function to clean the user input text
     function cleanText(text) {

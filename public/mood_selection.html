@@ -20,7 +20,7 @@
 
 </head>
 
-<body x-data="moodTracker" class="journal-background">
+<body x-data="moodTracker" class="mood-background">
     <section class="container journal-content">
         <h1>Select Your Mood</h1>
         <label for="moodSelector">How are you feeling today?</label>
@@ -36,7 +36,8 @@
         <button class="btn btn-primary" @click="submitMood(mood)">Save Mood</button>
         <p x-text="status"></p>
     </section>
-    <footer style="text-align: center; color: black;"></footer>
+
+    <footer style="text-align: center; color: black;">
     <p>&copy; 2024 Through The Skull. All rights reserved.</p>
     </footer>
 </body>

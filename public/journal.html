@@ -25,14 +25,13 @@
             <div class="heading">DAILY JOURNAL</div>
             <div id="journalForm" class="form-section">
 
-
                 <!-- Display the selected mood -->
                 <div class="mood-display" x-data="{ mood: localStorage.getItem('selectedMood') }">
                     <div class="subheading">Your Mood: <span x-text="mood"></span></div>
                 </div>
 
                 <div class="journal-entry">
-                    <div class="heading-head">Your Thoughts</div class="heading">
+                    <div class="heading-head">Your Thoughts</div>
                     <textarea x-model="entry" placeholder="Write about your day..."></textarea>
                     <p></p>
                     <button @click="saveEntry">Save Entry</button><button
