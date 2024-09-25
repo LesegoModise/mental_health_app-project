@@ -5,7 +5,8 @@ document.addEventListener('alpine:init', () => {
         showAnalysis: false,
         recommendations: '',
         entries: [],
-        
+        mood: localStorage.getItem('selectedMood') || '',
+    
 
         init() {
             this.loadEntries();
@@ -37,6 +38,8 @@ document.addEventListener('alpine:init', () => {
             } else {
                 alert('Please write something in your entry.');
             }
+              localStorage.setItem('journalEntry', this.entry);
+              window.location.href = "recommendation.html";
         },
 
         analyzeEntry() {
