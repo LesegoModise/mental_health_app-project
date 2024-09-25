@@ -1,70 +1,28 @@
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <title>Journal</title>
-    <title>Daily Journal</title>
->>>>>>> 7bfffadc0bace96aaeba6d0a931f0d2420e2ed1e
-    <title>JOURNAL</title>
-
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
-
-
-<<<<<<< HEAD
-=======
-    <title>Journal</title>
-    <title>Daily Journal</title>
->>>>>>> acb31eea7895971cb4d06ed2e0a384196552b8fc
-=======
->>>>>>> 7bfffadc0bace96aaeba6d0a931f0d2420e2ed1e
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="journal.js"></script>
-
+    <title>Daily Journal</title>
 </head>
 
-<body>
-    <!-- This will be the journaling page where the user can write down their thoughts and feelings -->
-    <!-- A text area will be provided for the user to jot down their feelings and thoughts -->
-    <!-- Once the user is done writing down, they will submit their entry which will trigger a call to the backend for analysis -->
-    <!-- The analysis results and recommendations will be displayed (when required) -->
-<body x-data="journalApp">
-    <h1>Daily Journal</h1>
-    <div id="journalForm" class="form-section">
-        <label for="moodSelector">How are you feeling today?</label>
-        <select id="moodSelector" x-model="mood">
-            <option value="">Please Select</option>
-            <option value="Sad">Sad</option>
-            <option value="Angry">Angry</option>
-            <option value="Emotional">Emotional</option>
-            <option value="Fine">Fine</option>
-            <option value="Happy">Happy</option>
-            <option value="anxious">Anxious</option>
-        </select>
-        <button @click="predictMentalState">predictMentalState</button>
+<body x-data="journalApp" class="journal-background">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-        <!-- Display the selected mood -->
-        <div class="mood-display" x-show="mood">
-            <h3>Your Mood: <span x-text="mood"></span> </h3>
->>>>>>> 7bfffadc0bace96aaeba6d0a931f0d2420e2ed1e
     <section class="container journal-content">
         <div class="journal-info">
             <div class="heading">DAILY JOURNAL</div>
             <div id="journalForm" class="form-section">
-
 
                 <!-- Display the selected mood -->
                 <div class="mood-display" x-data="{ mood: localStorage.getItem('selectedMood') }">
@@ -72,45 +30,24 @@
                 </div>
 
                 <div class="journal-entry">
-                    <div class="heading-head">Your Thoughts</div class="heading">
+                    <div class="heading-head">Your Thoughts</div>
                     <textarea x-model="entry" placeholder="Write about your day..."></textarea>
                     <p></p>
                     <button @click="saveEntry">Save Entry</button>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-
-        <!-- Display the selected mood -->
-        <div class="mood-display" x-show="mood">
-            <h3>Your Mood: <span x-text="mood"></span> </h3>
->>>>>>> acb31eea7895971cb4d06ed2e0a384196552b8fc
         </div>
+    </section>
 
-<<<<<<< HEAD
-    <footer style="text-align: center; color: black;"></footer>
-    <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+    <!-- <div class="journal-entry">
+        <h2>Your Thoughts</h2>
+        <textarea x-model="entry" placeholder="Write about your day..."></textarea>
+        <button @click="predictMentalState">Predict Mental State</button>
+    </div> why am I predicting the mental state??-->
+
+    <footer style="text-align: center; color: black;">
+        <p>&copy; 2024 Through The Skull. All rights reserved.</p>
     </footer>
-    </div> 
-=======
-=======
-        </div>
-
->>>>>>> 7bfffadc0bace96aaeba6d0a931f0d2420e2ed1e
-        <div class="journal-entry">
-            <h2>Your Thoughts</h2>
-            <textarea x-model="entry" placeholder="Write about your day..."></textarea>
-            <button @click="predictMentalState">predictMentalState</button>
-        </div>
-    </div>
-<<<<<<< HEAD
->>>>>>> acb31eea7895971cb4d06ed2e0a384196552b8fc
-=======
-    <footer style="text-align: center; color: black;"></footer>
-    <p>&copy; 2024 Through The Skull. All rights reserved.</p>
-    </footer>
-    </div> 
->>>>>>> 7bfffadc0bace96aaeba6d0a931f0d2420e2ed1e
 </body>
 
 </html>

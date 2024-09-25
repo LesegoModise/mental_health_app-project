@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import express from 'express';
 import sqlite3 from 'sqlite3';
 import cors from 'cors';
@@ -102,7 +101,4 @@ app.get('/journal/:userId', (req, res) => {
 app.listen(PORT, function () {
     console.log(`Server started http://localhost:${PORT}`);
 })
-=======
-// This will be an entry point 
-// We should set up routes for various functionalities like authentication, mood entry, journaling and reporting
->>>>>>> 7bfffadc0bace96aaeba6d0a931f0d2420e2ed1e
+
