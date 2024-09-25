@@ -27,7 +27,6 @@
                 <div class="heading">Emergency Support</div>
                 <p>Our top priority is your well-being. We are here to support you if you're feeling overwhelmed.</p>
             </header>
-
             <main x-data="emergencyApp">
                 <div>
                     <div class="subheading-emergency">Immediate Support</div>
@@ -40,24 +39,26 @@
                         <li><strong>Crisis Text Line:</strong> Text HELP to 56478</li>
                     </ul>
                 </div>
-
                 <div
-                    x-data="{ tips: ['Take deep breaths', 'Try meditation or mindfulness', 'Engage in physical activity', 'Connect with friends or family', 'Write down your thoughts'] }">
-                    <div class="subheading-emergency">Self-Care Tips</div>
-                    <button @click="showTips = !showTips">Show Self-Care Tips</button>
-                    <ul x-show="showTips">
-                        <template x-for="tip in tips" :key="tip">
-                            <li x-text="tip"></li>
-                        </template>
-                    </ul>
-                </div>
-
-
+                x-data="{ 
+                    tips: ['Take deep breaths', 'Try meditation or mindfulness', 'Engage in physical activity', 'Connect with friends or family', 'Write down your thoughts'],
+                    showTips: false 
+                }">
+                <div class="subheading-emergency">Self-Care Tips</div>
+                <button @click="showTips = !showTips">
+                    <span x-text="showTips ? 'Hide' : 'Show'"></span> Self-Care Tips
+                </button>
+                <ul x-show="showTips" class="self-care-tips" style="margin-top: 10px;">
+                    <template x-for="tip in tips" :key="tip">
+                        <li x-text="tip" class="tip-item"></li>
+                    </template>
+                </ul>
+            </div>
+            
                 <div>
                     <div class="subheading-emergency">Contact Us</div>
                     <p>Please get in touch with our support team if you need to chat to someone about your mental health
-                        at
-                        work:</p>
+                        at work:</p>
                     <address>
                         <p>Email: <a href="mailto:support@throughtheSkull.com">support@throughtheSkull.com</a></p>
                         <p>Phone: 011 098 6789</p>

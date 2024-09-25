@@ -1,5 +1,5 @@
-function journalApp() {
-    return {
+document.addEventListener('alpine:init', () => {
+    Alpine.data('journalApp', () => ({
         moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy'],
         selectedMood: '',
         entry: '',
@@ -7,31 +7,44 @@ function journalApp() {
         moodData: JSON.parse(localStorage.getItem('moodData')) || [], // Retrieve stored mood data
         chart: null,
 
-        //fetch mood data from the backend
+        // Fetch mood data from the backend
         fetchMoods() {
-            axios.get('http://localhost:../api/moods')
-            .then(response => {
-                this.moodData = response.data;
-                this.updateChart();
-            })
-            .catch(error => {
-                console.error('Error fetching moods:', error);
-            });
+            axios.get('http://localhost:4011/api/moods')
+                .then(response => {
+                    this.moodData = response.data;
+                    this.updateChart();
+                })
+                .catch(error => {
+                    console.error('Error fetching moods:', error);
+                });
         },
-        
+
         // Method to save journal entry and selected mood
         saveEntry() {
             if (this.selectedMood) {
-                this.moodData.push({
+                const moodEntry = {
                     mood: this.selectedMood,
                     date: new Date().toLocaleDateString()
-                });
-                axios.post('http://localhost:.../api/moods', moodEntry)
-                localStorage.setItem('moodData', JSON.stringify(this.moodData)); // Save to localStorage
-                this.updateChart(); // Update the chart with the new mood data
-                alert('Entry saved!');
-                this.entry = '';
-                this.selectedMood = '';
+                };
+
+                this.moodData.push(moodEntry);
+                
+                // Save to backend
+                axios.post('http://localhost:4011/api/moods', moodEntry)
+                    .then(() => {
+                        // Save to localStorage
+                        localStorage.setItem('moodData', JSON.stringify(this.moodData));
+                        
+                        // Update the chart with the new mood data
+                        this.updateChart();
+                        
+                        alert('Entry saved!');
+                        this.entry = '';
+                        this.selectedMood = '';
+                    })
+                    .catch(error => {
+                        console.error('Error saving mood entry:', error);
+                    });
             } else {
                 alert('Please select your mood.');
             }
@@ -58,6 +71,8 @@ function journalApp() {
                     datasets: [{
                         label: 'Mood Frequency',
                         data: moodCounts,
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+                        borderWidth: 1
                     }]
                 },
                 options: {
@@ -70,9 +85,10 @@ function journalApp() {
             });
         },
 
-        // Initialize the chart on component load
+        // Initialize the chart and fetch moods on component load
         init() {
-            this.updateChart();
+            this.updateChart(); // Initialize the chart with existing data
+            this.fetchMoods();  // Fetch latest moods from the backend
         }
-    }
-}
+    }));
+});

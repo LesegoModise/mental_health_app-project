@@ -525,3 +525,35 @@ label {
     /* overflow: hidden; */
     position: relative;
 }
+
+.mood-button {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.contacttherapist-body {
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    background-image: url(./Cover.png);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.contacttherapist-content{
+background-color: white;
+padding: 20px;
+margin: 50px;
+width: 94%;
+height: 120vh;
+border-radius: 10px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+position: relative;
+align-items: center;
+justify-content: space-between;
+text-align: center;
+}
