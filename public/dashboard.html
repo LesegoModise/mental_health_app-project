@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script src="./dashboard.js"></script>
+
+</head>
+
+<body class="dashboard" x-data="dashboard">
+
+    <div x-show="successMessage" class="alert alert-success">
+        <!-- {{ successMessage }} -->
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-md-2 sidebar"></div> -->
+            <!-- <div class="col-md-10 main-content"> -->
+            <section class="container dashboard-background">
+                <!-- <div class="profile-icon">
+                        <button @click="toggleProfileMenu">
+                            <img src="./Eric Nkosi.png" alt="My Profile" class="profile-icon-img">
+                        </button>
+                        <div x-show="profileMenuOpen" class="dropdown-menu dropdown-menu-right">
+                            <div class="uniqueID">USER ID: EN591</div>
+                            <a class="dropdown-item" href="#">Account Details</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" @click.prevent="logout">LOGOUT</a>
+                        </div>
+                    </div> -->
+                <div class="content-background">
+                    <div class="dashboard-content">
+                        <img src="./logo.png" alt="Through the Skull" class="logo-dashboard">
+                        <div class="buttons">
+                            <button class="btn btn-secondary selection" @click="navigateToMood_Selection">MOOD</button>
+                            <button class="btn btn-secondary selection" @click="navigateToJournal">JOURNAL</button>
+                            <button class="btn btn-secondary selection"
+                                @click="navigateToReport">REPORT</button>
+                            <button class="btn btn-secondary selection"
+                                @click="navigateToRecommendation">RECOMMENDATION</button>
+                            <button class="btn btn-secondary selection" @click="navigateToMoodChart">MOOD CHART</button>
+                            <button class="btn btn-secondary selection" @click="navigateToContactTherapist">CONTACT
+                                THERAPIST</button>
+                            <button class="btn btn-danger danger-selection"
+                                @click="navigateToEmergency">EMERGENCY</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    </div>
+
+    <footer style="text-align: center; color: black;"></footer>
+    <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

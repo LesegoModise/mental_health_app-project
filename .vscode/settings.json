@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
     "python.analysis.extraPaths": [
         "./my_project/ML_model"
     ]
+=======
+    "liveServer.settings.port": 5501,
+    "git.ignoreLimitWarning": true
+>>>>>>> 4972d50eb045573dafe464c5d62bc4d8253f90b7
 }
