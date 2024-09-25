@@ -1,4 +1,6 @@
 {
-    "liveServer.settings.port": 5501,
+    "python.analysis.extraPaths": [
+        "./my_project/ML_model"
+    ],
     "git.ignoreLimitWarning": true
 }
