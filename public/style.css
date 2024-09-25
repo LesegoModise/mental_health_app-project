@@ -532,11 +532,19 @@ label {
     margin: 10px;
 }
 
+<<<<<<< HEAD
 .profile-card {
+=======
+.contacttherapist-body {
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+>>>>>>> 1b5ce28759080afe135e8bdf331b4f48425f65f3
     background-image: url(./Cover.png);
     background-size: cover;
     width: 100%;
     height: 100vh;
+<<<<<<< HEAD
     overflow: hidden;
     position: relative;
 
@@ -554,4 +562,22 @@ label {
     /* align-items: center;
     justify-content: space-between;
     text-align: center; */
+=======
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.contacttherapist-content{
+background-color: white;
+padding: 20px;
+margin: 50px;
+width: 94%;
+height: 120vh;
+border-radius: 10px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+position: relative;
+align-items: center;
+justify-content: space-between;
+text-align: center;
+>>>>>>> 1b5ce28759080afe135e8bdf331b4f48425f65f3
 }

@@ -27,6 +27,10 @@ document.addEventListener('alpine:init', () => {
             }, 5000);
         },
 
+        navigateToMood_Selection() {
+            window.location.href = './mood_selection.html';
+        },
+
         navigateToJournal() {
             window.location.href = './journal.html';
         },
