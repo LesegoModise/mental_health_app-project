@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MOOD SELECTION</title>
+    <title>MOOD CHARt</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -17,32 +16,16 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="mood.js"></script>
+    <!-- <script src="mood.js"></script> -->
 </head>
+<body class="chart-background">
+    <section class="chart-content">
 
-<body x-data="moodTracker()" class="mood-background">
-
-    <section class="container mood-content">
-        <div class="mood-title">How Are You Feeling Today?</div>
-        <div class="emojis">
-            <span @click="selectMood('happy')" :class="{ 'selected': mood === 'happy' }" style="size: 100px;">😊</span>
-            <span @click="selectMood('sad')" :class="{ 'selected': mood === 'sad' }">😢</span>
-            <span @click="selectMood('angry')" :class="{ 'selected': mood === 'angry' }">😡</span>
-            <span @click="selectMood('tired')" :class="{ 'selected': mood === 'tired' }">😴</span>
-            <span @click="selectMood('neutral')" :class="{ 'selected': mood === 'neutral' }">😐</span>
-        </div>
-        <button @click="submitMood" class="submit-btn">SUBMIT</button>
-        <p x-text="statusMessage" class="status"></p>
-
-        <div class="skip-link-container">
-            <a href="dashboard.html" class="skip-link">Skip</a>
-        </div>
     </section>
 
     <footer style="text-align: center; color: black;">
         <p>&copy; 2024 Through The Skull. All rights reserved.</p>
     </footer>
-
+    
 </body>
-
 </html>
