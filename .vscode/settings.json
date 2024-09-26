@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
     "python.analysis.extraPaths": [
         "./my_project/ML_model"
     ],
