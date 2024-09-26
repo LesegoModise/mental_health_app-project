@@ -1,7 +1,5 @@
-
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+font-family: Georgia, 'Times New Roman', Times, serif;}
 
 .heading {
     font-size: xx-large;
@@ -285,8 +283,7 @@ label {
 .journal-background,
 .emergency-background,
 .consent-background,
-.mood-background,
-.therapist-background  {
+.therapist-background {
     background-image: url(./Cover.png);
     background-size: cover;
     width: 100%;
@@ -316,7 +313,8 @@ label {
     text-align: center;
 }
 
-.journal-info, .emergency-info {
+.journal-info,
+.emergency-info {
     background-color: rgb(208, 208, 208);
     position: relative;
     align-items: center;
