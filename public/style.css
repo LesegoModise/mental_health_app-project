@@ -292,11 +292,10 @@ label {
     position: relative;
 }
 
-.journal-background {
+/* .journal-background {
     padding: 1px;
-}
+} */
 
-.journal-content,
 .emergency-content,
 .consent-content,
 .therapist-content {
@@ -304,6 +303,20 @@ label {
     padding: 20px;
     margin: 50px;
     width: 94%;
+    height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.journal-content{
+    background-color: white;
+    padding: 20px;
+    margin: 50px;
+    width: 90%;
     height: 80vh;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -580,3 +593,106 @@ align-items: center;
 justify-content: space-between;
 text-align: center;
 }
+
+.popover-btn {
+    margin-top: 50px;
+    display: block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.emojis {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Increased gap for better spacing */
+    margin-bottom: 30px; /* Add margin for spacing */
+    font-size: 33px; /* Increase emoji size */
+}
+
+.emoji {
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.selected {
+    border: 3px solid green; /* Slightly thicker border for selected state */
+    border-radius: 50%;
+    padding: 10px; /* Add padding for better visual appeal */
+    transform: scale(1.2);     /* Slightly enlarge the selected emoji */
+}
+
+
+.submit-btn {
+    background-color: #28a745; /* Bootstrap success green */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #218838; /* Darker shade for hover */
+}
+
+
+.status {
+    margin-top: 10px;
+    color: red;
+}
+
+.mood-content {
+    background-color: white;
+    padding: 40px;
+    margin: 150px auto;
+    max-width: 400px;
+    /* height: 80vh; */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.mood-background {
+    background-image: url(./Cover.png);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.mood-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.skip-link-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.skip-link {
+    display: inline-block;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.skip-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+

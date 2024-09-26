@@ -20,7 +20,7 @@
 
 </head>
 
-<body x-data="journalApp">
+<body x-data="journalApp" class="journal-background">
     <section class="container journal-content">
         <div class="journal-info">
             <div class="heading">DAILY JOURNAL</div>
@@ -35,11 +35,9 @@
                     <div class="heading-head">Your Thoughts</div>
                     <textarea x-model="entry" placeholder="Write about your day..."></textarea>
                     <p></p>
-                    <button @click="saveEntry">Save Entry</button><button
-                        @click="predictMentalState">predictMentalState</button>
+                    <button @click="saveEntry">Save Entry</button>
                 </div>
             </div>
-        </div>
         </div>
         <footer style="text-align: center; color: black;"></footer>
         <p>&copy; 2024 Through The Skull. All rights reserved.</p>
