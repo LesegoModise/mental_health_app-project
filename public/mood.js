@@ -8,7 +8,22 @@ document.addEventListener('alpine:init', () => {
                 this.status = 'Please select a mood!';
                 return;
             }
+            const moodEntry = {
+                mood: this.mood,
+                date: new Date().toLocaleDateString(),
+            };
 
+            axios.post('http://localhost:4011/api/moods', moodEntry)
+            .then(() => {
+                this.status = 'Mood saved successfully!';
+                setTimeout(() => {
+                    window.location.href = 'chart.html';  // Redirect to the chart page after saving
+                }, 1000);
+            })
+            .catch(error => {
+                this.status = 'Error saving mood: ' + error;
+            });
+            
             // Save mood to localStorage
             localStorage.setItem('selectedMood', this.mood);
             this.status = `Mood saved: ${this.mood}`;
