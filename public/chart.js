@@ -19,11 +19,13 @@ document.addEventListener('alpine:init', () => {
                     console.error('Error fetching moods:', error);
                 });
         },
-        // Method to update the chart
-        updateChart() {
-            const moodCounts = this.moods.map(mood => this.moodData.filter(entry => entry.mood === mood).length);
 
-            // Destroy the existing chart before creating a new one
+        updateChart() {
+            const moodCounts = this.moods.map(mood =>
+                this.moodData.filter(entry => entry.mood === mood).length
+            );
+
+            // Ensure the chart is destroyed before updating
             if (this.chart) {
                 this.chart.destroy();
             }
@@ -31,21 +33,10 @@ document.addEventListener('alpine:init', () => {
             this.createChart(moodCounts);
         },
 
-        updateChart() {
-            const moodCounts = this.moods.map(mood =>
-                this.moodData.filter(entry => entry.mood === mood).length
-            );
-
-            if (this.chart) {
-                this.chart.data.datasets[0].data = moodCounts;
-                this.chart.update();
-            } else {
-                this.createChart(moodCounts);
-            }
-        },
-
         createChart(moodCounts) {
             const ctx = document.getElementById('moodChart').getContext('2d');
+            
+            // Create new chart only once
             this.chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
