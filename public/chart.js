@@ -1,13 +1,16 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('journalApp', () => ({
         moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy', 'Anxious'],
-        moodData: [],
+        selectedMood: '',
+        moodData:  JSON.parse(localStorage.getItem('moodData')) || [],
         chart: null,
 
         init() {
             this.fetchMoods();
+            this.updateChart();
         },
 
+        
         fetchMoods() {
             axios.get('http://localhost:4011/api/moods')
                 .then(response => {
@@ -20,17 +23,46 @@ document.addEventListener('alpine:init', () => {
                 });
         },
 
-        updateChart() {
-            const moodCounts = this.moods.map(mood =>
-                this.moodData.filter(entry => entry.mood === mood).length
-            );
+          // Method to save journal entry and selected mood
+          saveEntry() {
+            if (this.selectedMood) {
+                const moodEntry = {
+                    mood: this.selectedMood,
+                    date: new Date().toLocaleDateString()
+                };
 
-            // Ensure the chart is destroyed before updating
-            if (this.chart) {
-                this.chart.destroy();
+                this.moodData.push(moodEntry);
+                
+                // Save to backend
+                axios.post('http://localhost:4011/api/moods', moodEntry)
+                    .then(() => {
+                        // Save to localStorage
+                        localStorage.setItem('moodData', JSON.stringify(this.moodData));
+                        
+                        // Update the chart with the new mood data
+                        this.updateChart();
+                        
+                        alert('Entry saved!');
+                        this.entry = '';
+                        this.selectedMood = '';
+                    })
+                    .catch(error => {
+                        console.error('Error saving mood entry:', error);
+                    });
+            } else {
+                alert('Please select your mood.');
             }
+        },
 
-            this.createChart(moodCounts);
+         // Method to update the chart
+        updateChart() {
+            const moodCounts = this.moods.map(mood => this.moodData.filter(entry => entry.mood === mood).length);
+            if (this.chart) {
+                this.chart.data.datasets[0].data = moodCounts;
+                this.chart.update();
+            } else {
+                this.createChart(moodCounts);
+            }
         },
 
         createChart(moodCounts) {
