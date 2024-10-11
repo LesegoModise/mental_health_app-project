@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the model
 model = joblib.load('logistic_model.pkl')
