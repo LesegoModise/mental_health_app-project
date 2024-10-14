@@ -3,6 +3,18 @@ document.addEventListener('alpine:init', () => {
         profileMenuOpen: false,
         successMessage: '',
 
+        init() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn) {
+                this.showPopover();
+                this.successMessage = 'Welcome, Eric Nkosi!';
+
+                localStorage.removeItem('isLoggedIn');
+
+                this.clearSuccessMessageAfterTimeout();
+            }
+        },
+
         toggleProfileMenu() {
             this.profileMenuOpen = !this.profileMenuOpen;
             console.log('Profile menu toggled:', this.profileMenuOpen);
@@ -25,6 +37,12 @@ document.addEventListener('alpine:init', () => {
             setTimeout(() => {
                 this.successMessage = '';
             }, 5000);
+        },
+
+        showPopover() {
+            $(document).ready(function() {
+                $('#profile-icon').popover('show');
+            });
         },
 
         navigateToMood_Selection() {

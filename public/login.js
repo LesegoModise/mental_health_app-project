@@ -12,15 +12,13 @@ document.addEventListener('alpine:init', () => {
             const correctPassword = 'EricNkosi91';
 
             if (this.username === correctUsername && this.password === correctPassword) {
-                location.href = './dashboard.html';
+                localStorage.setItem('isLoggedIn', 'true');
+                location.href = './mood_selection.html';
             } else {
                 this.errors = {
                     username: 'Invalid username or password',
                     password: 'Invalid username or password'
                 };
-                setTimeout(() => {
-                    this.errors = {};
-                }, 5000);
             }
         },
 

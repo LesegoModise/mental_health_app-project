@@ -168,3 +168,4 @@ app.get('/api/moods/:userId', (req, res) => {
 app.listen(PORT, function () {
   console.log(`Server started http://localhost:${PORT}`);
 })
+
