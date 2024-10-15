@@ -6,7 +6,7 @@ document.addEventListener('alpine:init', () => {
         recommendations: '',
         entries: [],
         mood: localStorage.getItem('selectedMood') || '',
-    
+
 
         init() {
             this.loadEntries();
@@ -20,7 +20,7 @@ document.addEventListener('alpine:init', () => {
             }
         },
 
-        saveEntry() {
+        async saveEntry() {
             if (this.entry.trim()) {
                 const newEntry = {
                     id: 'entry-' + Math.random().toString(36).substr(2, 9),
@@ -29,17 +29,25 @@ document.addEventListener('alpine:init', () => {
                     date: new Date().toLocaleString()
                 };
 
+                const response = await axios.post('http://127.0.0.1:5000/predict', {
+                    statement: this.entry
+                })
+
+                
+                console.log('predictions', response.data);
+
+
                 this.entries.push(newEntry);
                 this.saveToLocalStorage();
                 this.showAnalysis = true;
                 this.recommendations = this.analyzeEntry();
                 this.entry = ''; // Clear the entry field
-                alert('Entry saved successfully!');
+                // alert('Entry saved successfully!');
             } else {
                 alert('Please write something in your entry.');
             }
-              localStorage.setItem('journalEntry', this.entry);
-              window.location.href = "recommendation.html";
+            localStorage.setItem('journalEntry', this.entry);
+            // window.location.href = "recommendation.html";
         },
 
         analyzeEntry() {
