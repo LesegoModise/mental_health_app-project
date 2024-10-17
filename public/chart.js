@@ -1,45 +1,41 @@
-function journalApp() {
-    return {
-        moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy'],
-        selectedMood: '',
-        entry: '',
-        currentPrompt: 'What’s on your mind today?',
-        moodData: JSON.parse(localStorage.getItem('moodData')) || [], // Retrieve stored mood data
+document.addEventListener('alpine:init', () => {
+    Alpine.data('journalApp', () => ({
+        moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy', 'Anxious'],
+        moodData: [],
         chart: null,
 
-        //fetch mood data from the backend
-        fetchMoods() {
-            axios.get('http://localhost:../api/moods')
-            .then(response => {
-                this.moodData = response.data;
-                this.updateChart();
-            })
-            .catch(error => {
-                console.error('Error fetching moods:', error);
-            });
-        },
-        
-        // Method to save journal entry and selected mood
-        saveEntry() {
-            if (this.selectedMood) {
-                this.moodData.push({
-                    mood: this.selectedMood,
-                    date: new Date().toLocaleDateString()
-                });
-                axios.post('http://localhost:.../api/moods', moodEntry)
-                localStorage.setItem('moodData', JSON.stringify(this.moodData)); // Save to localStorage
-                this.updateChart(); // Update the chart with the new mood data
-                alert('Entry saved!');
-                this.entry = '';
-                this.selectedMood = '';
-            } else {
-                alert('Please select your mood.');
-            }
+        init() {
+            this.fetchMoods();
         },
 
+        fetchMoods() {
+            axios.get('http://localhost:4011/api/moods')
+                .then(response => {
+                    console.log(response.data);
+                    this.moodData = response.data;
+                    this.updateChart();
+                })
+                .catch(error => {
+                    console.error('Error fetching moods:', error);
+                });
+        },
         // Method to update the chart
         updateChart() {
             const moodCounts = this.moods.map(mood => this.moodData.filter(entry => entry.mood === mood).length);
+
+            // Destroy the existing chart before creating a new one
+            if (this.chart) {
+                this.chart.destroy();
+            }
+
+            this.createChart(moodCounts);
+        },
+
+        updateChart() {
+            const moodCounts = this.moods.map(mood =>
+                this.moodData.filter(entry => entry.mood === mood).length
+            );
+
             if (this.chart) {
                 this.chart.data.datasets[0].data = moodCounts;
                 this.chart.update();
@@ -48,7 +44,6 @@ function journalApp() {
             }
         },
 
-        // Method to create the chart
         createChart(moodCounts) {
             const ctx = document.getElementById('moodChart').getContext('2d');
             this.chart = new Chart(ctx, {
@@ -58,6 +53,8 @@ function journalApp() {
                     datasets: [{
                         label: 'Mood Frequency',
                         data: moodCounts,
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                        borderWidth: 1
                     }]
                 },
                 options: {
@@ -68,11 +65,6 @@ function journalApp() {
                     }
                 }
             });
-        },
-
-        // Initialize the chart on component load
-        init() {
-            this.updateChart();
         }
-    }
-}
+    }));
+});

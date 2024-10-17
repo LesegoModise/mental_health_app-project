@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
+    <title>Document</title>
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
@@ -21,9 +21,6 @@
 
 <body class="login" x-data="login">
 
-    <div x-show="errors.username || errors.password" class="alert alert-danger pop">
-        <div x-text="errors.username"></div>
-    </div>
     <div class="container vh-100 d-flex align-items-center justify-content-center">
         <div class="card form-container">
 
@@ -34,13 +31,11 @@
                 <form id="loginForm" @submit="submit">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter username/email..."
-                            x-model="username">
+                        <input type="text" class="form-control" id="username" placeholder="Enter username/email..." x-model="username">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password"
-                            x-model="password">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" x-model="password">
                     </div>
                     <div class="d-flex-forgot justify-content-between align-items-center mb-3">
                         <div class="form-check">
@@ -49,18 +44,19 @@
                         </div>
                         <a href="#" id="forgotPassword" class="text-muted">Forgot Password</a>
                     </div>
-                    <div class="log-in">
-                        <button type="submit" class="btn btn-primary log-in-button">LOGIN</button>
-                        <p></p>
-                        <button type="button" class="btn btn-secondary log-in-button" @click="signUp">SIGN UP</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">LOGIN</button>
+                    <button type="button" class="btn btn-secondary" @click="signUp">SIGN UP</button>
                 </form>
 
+                <div x-show="errors.username || errors.password" class="alert alert-danger mt-3">
+                    <p x-text="errors.username"></p>
+                </div>
             </div>
         </div>
     </div>
-    <footer style="text-align: center; color: black;">&copy; 2024 Through The Skull. All rights reserved.</footer>
 
+    </div>
+    </div>
 
 </body>
 

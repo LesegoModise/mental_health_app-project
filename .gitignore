@@ -1,1 +1,12 @@
+<<<<<<< HEAD
+node_modules
+.vscode
+.venv
+__pycache__
+=======
 /node_modules
+/index.lock
+.vscode
+__pycache__
+.venv
+>>>>>>> eeec11f99c10a0fd646aee89b11a4dd3320ad80a
