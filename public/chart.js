@@ -8,13 +8,18 @@ document.addEventListener('alpine:init', () => {
         fetchMoods() {
             axios.get('http://localhost:4011/api/moods')
                 .then(response => {
-                    this.moodData = response.data;
-                    this.updateChart();
+                    if (response.data && Array.isArray(response.data)) {
+                        this.moodData = response.data;
+                        this.updateChart();
+                    } else {
+                        console.error('Invalid data format from API');
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching moods:', error);
                 });
         },
+
 
         // Method to update the chart
         updateChart() {
@@ -42,12 +47,29 @@ document.addEventListener('alpine:init', () => {
                     }]
                 },
                 options: {
+                    responsive: true,  // Ensures the chart adapts to different screen sizes
+                    maintainAspectRatio: false, // Allows chart resizing if needed
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1  // Controls the step size of the Y-axis
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',  // Ensure legend is displayed correctly
                         }
                     }
                 }
+            });
+        },
+        listenForMoodUpdates() {
+            document.addEventListener('mood-updated', () => {
+                this.moodData = JSON.parse(localStorage.getItem('moodData')) || [];
+                this.updateChart();
             });
         },
 
@@ -55,6 +77,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             this.updateChart(); // Initialize the chart with existing data
             this.fetchMoods();  // Fetch latest moods from the backend
+            this.listenForMoodUpdates();
         }
     }));
 });
