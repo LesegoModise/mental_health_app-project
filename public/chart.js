@@ -1,6 +1,7 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('journalApp', () => ({
         moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy'],
+        selectedMood:'',
         moodData: JSON.parse(localStorage.getItem('moodData')) || [], // Retrieve stored mood data
         chart: null,
 
