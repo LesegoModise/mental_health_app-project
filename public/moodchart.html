@@ -14,22 +14,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="chart.js"></script>
-    <script src="path/to/your/chart.js"></script>
 </head>
 
-<body class="chart-background" x-data="journalApp" x-init="init()">
-    <section class="chart-content">
-        <div class="container">
-            <h1 class="text-center">Mood Chart</h1>
-            <canvas id="moodChart" width="600" height="200"></canvas>
+<body x-data="journalApp" x-init="init()">
+    <section class="container mood-content">
+        <div class="moodchart-info">
+            <h1>Your Mood Chart</h1>
+            <div class="mood-chart-container">
+                <canvas id="moodChart"></canvas>
+            </div>
         </div>
-    </section>
-
-    <footer style="text-align: center; color: black;">
+        <footer style="text-align: center; color: black;"></footer>
         <p>&copy; 2024 Through The Skull. All rights reserved.</p>
-    </footer>
+        </footer>
 
+    </section>
 </body>
 
 </html>
