@@ -283,7 +283,7 @@ label {
 .journal-background,
 .emergency-background,
 .consent-background,
-.chart-background,
+.moodchart-background,
 .therapist-background {
     background-image: url(./Cover.png);
     background-size: cover;
