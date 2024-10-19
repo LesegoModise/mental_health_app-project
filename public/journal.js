@@ -29,7 +29,7 @@ document.addEventListener('alpine:init', () => {
                     date: new Date().toLocaleString()
                 };
 
-                const response = await axios.post('http://127.0.0.1:5000/predict', {
+                const response = await axios.post('http://localhost:5000/predict', {
                     statement: this.entry
                 })
 
