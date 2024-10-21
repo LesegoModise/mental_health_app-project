@@ -31,3 +31,5 @@ SELECT user_id, '2024-10-14', '2024-10-20', GROUP_CONCAT(content, '\n\n')
 FROM journal_entries
 WHERE user_id = 1 AND entry_date BETWEEN '2024-10-14' AND '2024-10-20'
 GROUP BY user_id;
+
+
