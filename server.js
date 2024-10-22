@@ -33,21 +33,42 @@ await db.migrate();
 // });
 
 // Example endpoint to fetch all journal entries
-app.get('/journal-entries', (req, res) => {
-  db.all('SELECT * FROM journal_entries', [], (err, rows) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
+app.get('/journal-entries', async (req, res) => {
+  try {
+    const rows = await db.all('SELECT * FROM journal_entries')
+       res.json({
       message: 'Success',
       data: rows,
     });
-  });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+  // await db.all('SELECT * FROM journal_entries', [], (err, rows) => {
+  //   console.log({err, rows});
+  //   if (err) {
+  //     res.status(400).json({ error: err.message });
+  //     return;
+  //   }
+  //   res.json({
+  //     message: 'Success',
+  //     data: rows,
+  //   });
+  // });
 });
 
 // Example endpoint to add a new journal entry
-app.post('/journal-entries', (req, res) => {
+app.post('/journal-entries', async (req, res) => {
+  // try {
+  //   const rows = await db.all('INSERT INTO journal_entries')
+  //   res.json({
+  //     message: 'Journal entry added successfully',
+  //     data: { id: this.lastID, user_id, entry_date, content, mood },
+  //   });
+  // } catch (error) {
+  //   res.status(400).json({ error: 'Missing required fields: user_id, entry_date, or content' });
+  // }
+
+
   console.log('Request body:', req.body); // Log the request body for debugging
 
   const { user_id, entry_date, content, mood } = req.body;
