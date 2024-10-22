@@ -29,11 +29,15 @@ document.addEventListener('alpine:init', () => {
                     date: new Date().toLocaleString()
                 };
 
+                
+
                 const response = await axios.post('http://localhost:5000/predict', {
                     statement: this.entry
                 })
 
-                
+                const data = await axios.post('/journal-entries', newEntry );
+
+                console.log('data', data.data)
                 console.log('predictions', response.data);
 
 
@@ -49,6 +53,11 @@ document.addEventListener('alpine:init', () => {
             localStorage.setItem('journalEntry', this.entry);
             //  window.location.href = "recommendation.html";
         },
+
+     
+
+
+
 
         analyzeEntry() {
             // Basic analysis based on mood
@@ -70,6 +79,7 @@ document.addEventListener('alpine:init', () => {
         saveToLocalStorage() {
             // Save entries to localStorage
             localStorage.setItem('journalEntries', JSON.stringify(this.entries));
-        }
+        } 
+
     }));
 });
