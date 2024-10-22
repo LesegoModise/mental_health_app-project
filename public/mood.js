@@ -5,6 +5,7 @@ document.addEventListener('alpine:init', () => {
 
         selectMood(selectedMood) {
             this.mood = selectedMood;  // Update the mood variable when an emoji is clicked
+            this.updateMoodData();
         },
 
         submitMood() {
@@ -20,6 +21,13 @@ document.addEventListener('alpine:init', () => {
             setTimeout(() => {
                 window.location.href = 'journal.html';
             }, 3000);
+        },
+
+        updateMoodData() {
+            let currentMoodData = JSON.parse(localStorage.getItem('moodData')) || [];
+            currentMoodData.push({ mood: this.mood, date: new Date().toISOString() });
+            localStorage.setItem('moodData', JSON.stringify(currentMoodData));
+            document.dispatchEvent(new CustomEvent('mood-updated', { detail: this.mood }));
         }
     }));
 });
