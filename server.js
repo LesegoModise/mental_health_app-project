@@ -1,8 +1,6 @@
-import express from 'express';
-import cors from 'cors';
-import * as sqlite from 'sqlite';
-import sqlite3 from 'sqlite3';
-
+const express = require('express');
+const cors = require('cors'); // Import the cors package
+const sqlite3 = require('sqlite3').verbose();
 const app = express();
 
 app.use(express.static('public'))
