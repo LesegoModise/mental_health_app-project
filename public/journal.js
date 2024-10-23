@@ -47,7 +47,7 @@ document.addEventListener('alpine:init', () => {
                 alert('Please write something in your entry.');
             }
             localStorage.setItem('journalEntry', this.entry);
-            // window.location.href = "recommendation.html";
+            //  window.location.href = "recommendation.html";
         },
 
         analyzeEntry() {
