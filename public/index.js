@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Initialize SQLite database
-const db = new sqlite3.Database(':memory:');
+// const db = new sqlite3.Database(':memory:');
 
 // Create a table for storing mood data
 db.serialize(() => {
@@ -20,6 +20,28 @@ db.serialize(() => {
     date TEXT
   )`);
 });
+const db = new sqlite3.Database('./moods.db', (err) => {
+  if (err) {
+      console.error('Error connecting to the database:', err.message);
+  } else {
+      console.log('Connected to the SQLite database.');
+  }
+});
+
+// Route to get mood data for a specific user
+app.get('/api/moods/:user_id', (req, res) => {
+  const userId = req.params.user_id;
+  const sql = `SELECT mood, COUNT(*) AS mood_count FROM moods WHERE user_id = ? GROUP BY mood`;
+
+  db.all(sql, [userId], (err, rows) => {
+      if (err) {
+          res.status(500).json({ error: err.message });
+          return;
+      }
+      res.json(rows);
+  });
+});
+
 
 // Endpoint to save a new mood entry
 app.post('/api/moods', (req, res) => {

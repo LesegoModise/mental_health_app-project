@@ -32,5 +32,9 @@ FROM journal_entries
 WHERE user_id = 1 AND entry_date BETWEEN '2024-10-14' AND '2024-10-20'
 GROUP BY user_id;
 
-INSERT INTO moods (user_id, mood) 
-VALUES (1, 'happy', 'sad', 'neutral', 'angry');
+INSERT INTO moods (user_id, mood) VALUES 
+(1, 'happy'),
+(1, 'sad'),
+(1, 'neutral'),
+(1, 'angry'),
+(1, 'happy');
