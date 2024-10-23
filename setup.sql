@@ -24,3 +24,21 @@ CREATE TABLE weekly_reports (
     report_content TEXT,
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
+
+DROP TABLE IF EXISTS moods;
+
+--Table for mood selection
+CREATE TABLE moods (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    mood TEXT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS moods (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    mood TEXT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
