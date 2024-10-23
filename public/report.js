@@ -14,7 +14,7 @@ document.addEventListener('alpine:init', () => {
             try {
                 const response = await fetch('/journal-entries');
                 const data = await response.json();
-                this.fruits = data.data
+                this.data = data.data
                 console.log(data.data); // Display the data in the console
             } catch (error) {
                 console.error('Error fetching entries:', error);
@@ -22,7 +22,4 @@ document.addEventListener('alpine:init', () => {
         }
     
     }))
-
-    
-
 })
