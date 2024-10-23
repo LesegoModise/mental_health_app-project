@@ -24,3 +24,4 @@ CREATE TABLE weekly_reports (
     report_content TEXT,
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
+
