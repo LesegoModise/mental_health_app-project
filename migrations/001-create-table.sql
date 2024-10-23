@@ -17,7 +17,7 @@ CREATE TABLE journal_entries (
 
 -- Table for weekly reports
 CREATE TABLE weekly_reports (
-    report_id INTEGER PRIMARY KEY,
+    report_id INTEGER PRIMARY KEY, 
     user_id INTEGER NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
