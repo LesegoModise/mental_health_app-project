@@ -34,3 +34,4 @@ GROUP BY user_id;
 
 INSERT INTO moods (user_id, mood) 
 VALUES (1, 'happy', 'sad', 'neutral', 'angry');
+
