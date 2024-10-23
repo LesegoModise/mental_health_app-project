@@ -1,23 +1,29 @@
-const express = require('express');
-const cors = require('cors'); // Import the cors package
-const sqlite3 = require('sqlite3').verbose();
+import express from 'express';
+import cors from 'cors';
+import * as sqlite from 'sqlite';
+import sqlite3 from 'sqlite3';
+
 const app = express();
-const PORT = 3000;
 
-// Use the CORS middleware
-app.use(cors()); // Enable CORS for all requests
+app.use(express.static('public'))
+app.use(express.json())
+app.use(cors())
 
-// Middleware to parse JSON
-app.use(express.json());
+const db = await sqlite.open({ //This open the database connection
+  filename: './data_plan.db',
+  driver: sqlite3.Database
+});
+
+await db.migrate();
 
 // Connect to SQLite database
-const db = new sqlite3.Database('./database.db', (err) => {
-  if (err) {
-    console.error('Error opening database:', err.message);
-  } else {
-    console.log('Connected to the SQLite database.');
-  }
-});
+// const db = new sqlite3.Database('./database.db', (err) => {
+//   if (err) {
+//     console.error('Error opening database:', err.message);
+//   } else {
+//     console.log('Connected to the SQLite database.');
+//   }
+// });
 
 // Example endpoint to fetch all journal entries
 app.get('/journal-entries', (req, res) => {
@@ -58,7 +64,7 @@ app.post('/journal-entries', (req, res) => {
 });
 
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 4011;
+app.listen(PORT, function () {
+  console.log(`Server started http://localhost:${PORT}`);
+})

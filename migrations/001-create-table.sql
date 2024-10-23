@@ -25,6 +25,7 @@ CREATE TABLE weekly_reports (
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
+
 DROP TABLE IF EXISTS moods;
 
 --Table for mood selection
