@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 import express from 'express'
 import cors from 'cors'
 import * as sqlite from 'sqlite'
 import sqlite3 from 'sqlite3'
-=======
-import express from 'express';
-import cors from 'cors';
-import * as sqlite from 'sqlite';
-import sqlite3 from 'sqlite3';
-
->>>>>>> e1f1bd9a (Successfully created a working database for our app so now we need to link it to the frontend then we are good to go.)
 const app = express();
 
 app.use(express.static('public'))
