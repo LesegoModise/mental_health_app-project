@@ -52,6 +52,14 @@ app.get('/api/moods/counts', (req, res) => {
   });
 });
 
+app.get('/moods', (req, res) => {
+  const sql = 'SELECT mood, COUNT(*) AS mood_count FROM moods WHERE user_id = ? GROUP BY mood';
+  db.query(sql, [req.query.user_id], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
 // app.listen(port, () => {
 //   console.log(`Server running at http://localhost:${port}`);
 // });

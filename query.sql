@@ -16,3 +16,13 @@ ALTER TABLE weekly_reports
 ADD COLUMN mood TEXT;
 
 DELETE FROM journal_entries;
+
+SELECT * FROM moods;
+
+SELECT mood, COUNT(*) AS mood_count
+FROM moods
+WHERE user_id = 1
+GROUP BY mood;
+
+ALTER TABLE moods 
+ADD COLUMN mood TEXT;
