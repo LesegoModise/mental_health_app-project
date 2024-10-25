@@ -165,6 +165,29 @@ app.get('/api/moods/:userId', (req, res) => {
   });
 });
 
+// Example Node.js/Express route handler
+app.post('/api/moods', async (req, res) => {
+  const { mood, user_id } = req.body;
+  
+  if (!mood || !user_id) {
+      return res.status(400).json({ error: 'Mood and user_id are required' });
+  }
+
+  try {
+      const result = await db('moods').insert({
+          mood,
+          user_id,
+          date: new Date().toISOString()
+      }).returning('*'); // Returning the newly created entry
+
+      res.status(201).json(result[0]); // Send the created mood entry back as confirmation
+  } catch (error) {
+      console.error("Error saving mood:", error);
+      res.status(500).json({ error: 'Failed to save mood' });
+  }
+});
+
+
 app.listen(PORT, function () {
   console.log(`Server started http://localhost:${PORT}`);
 })
