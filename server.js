@@ -3,6 +3,11 @@ import cors from 'cors';
 import * as sqlite from 'sqlite';
 import sqlite3 from 'sqlite3';
 
+
+// const express = require('express');
+// const db = require('./database');
+// const cors = require('cors');
+
 const app = express();
 
 app.use(express.static('public'))
@@ -12,6 +17,33 @@ app.use(cors())
 const db = await sqlite.open({ //This open the database connection
   filename: './data_plan.db',
   driver: sqlite3.Database
+});
+db.run(`
+  CREATE TABLE moods (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  mood TEXT,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+  `)
+
+
+db.getDatabaseInstance(() => {
+  
+  db.run(`
+      CREATE TABLE IF NOT EXISTS moods (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          mood TEXT NOT NULL,
+          date TEXT DEFAULT CURRENT_TIMESTAMP,
+          user_id INTEGER NOT NULL
+      )
+  `, (err) => {
+      if (err) {
+          console.error("Error creating moods table:", err);
+      } else {
+          console.log("Moods table created or already exists.");
+      }
+  });
 });
 
 await db.migrate();
@@ -63,6 +95,26 @@ app.post('/journal-entries', (req, res) => {
   });
 });
 
+// Endpoint to save a mood
+app.post('http://127.0.0.1:4011/api/moods', (req, res) => {
+  const { mood, user_id } = req.body;
+  db.run(`INSERT INTO moods (mood, user_id) VALUES (?, ?)`, [mood, user_id], function (err) {
+      if (err) {
+          return res.status(500).json({ error: err.message });
+      }
+      res.status(201).json({ id: this.lastID });
+  });
+});
+
+// Endpoint to fetch all moods
+app.get('http://127.0.0.1:4011/api/moods', (req, res) => {
+  db.all(`SELECT * FROM moods`, [], (err, rows) => {
+      if (err) {
+          return res.status(500).json({ error: err.message });
+      }
+      res.json({ moods: rows });
+  });
+});
 
 const PORT = process.env.PORT || 4011;
 app.listen(PORT, function () {

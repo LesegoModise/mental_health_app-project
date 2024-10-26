@@ -33,13 +33,16 @@ db.serialize(() => {
     foreign key (user_id) REFERENCES users(id)
   );`);
 
+  
+  //  module.exports = db;
+
   // delete hard coded user
-  db.run('insert into users (username) values (?);',['EricNkosi']);
+  db.run('insert into users (username) values (?);', ['EricNkosi']);
 
   // const data = db.all('select * from users;');
 
   // console.log({data});
-  
+
 
 });
 
@@ -47,11 +50,11 @@ db.serialize(() => {
 app.post('/api/moods', (req, res) => {
   const { mood, userId } = req.body;
   console.log(req.body);
-  
+
   db.run(`INSERT INTO moods (mood, user_id) VALUES (?, ?)`, [mood, userId || 1], function (err) {
     if (err) {
       console.log(err);
-      
+
       return res.status(500).json({ error: err.message });
     }
     res.status(201).json({ id: this.lastID });
@@ -70,11 +73,11 @@ app.get('/api/moods', (req, res) => {
 
 app.get('/api/moods/:userId', async (req, res) => {
   console.log(req.params);
-  
+
   const result = db.all(`select * from moods where mood = 'angry'`);
   console.log(result);
-  
-res.json(result)
+
+  res.json(result)
 })
 
 // Endpoint to get mood counts
@@ -168,22 +171,22 @@ app.get('/api/moods/:userId', (req, res) => {
 // Example Node.js/Express route handler
 app.post('/api/moods', async (req, res) => {
   const { mood, user_id } = req.body;
-  
+
   if (!mood || !user_id) {
-      return res.status(400).json({ error: 'Mood and user_id are required' });
+    return res.status(400).json({ error: 'Mood and user_id are required' });
   }
 
   try {
-      const result = await db('moods').insert({
-          mood,
-          user_id,
-          date: new Date().toISOString()
-      }).returning('*'); // Returning the newly created entry
+    const result = await db('moods').insert({
+      mood,
+      user_id,
+      date: new Date().toISOString()
+    }).returning('*'); // Returning the newly created entry
 
-      res.status(201).json(result[0]); // Send the created mood entry back as confirmation
+    res.status(201).json(result[0]); // Send the created mood entry back as confirmation
   } catch (error) {
-      console.error("Error saving mood:", error);
-      res.status(500).json({ error: 'Failed to save mood' });
+    console.error("Error saving mood:", error);
+    res.status(500).json({ error: 'Failed to save mood' });
   }
 });
 
