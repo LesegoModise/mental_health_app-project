@@ -27,7 +27,7 @@ await db.migrate();
 // Example endpoint to fetch all journal entries
 app.get('/journal-entries', async (req, res) => {
   try {
-    const rows = await db.all('SELECT * FROM journal_entries')
+    const rows = await db.all('SELECT * FROM journal_entries LIMIT 5')
        res.json({
       message: 'Success',
       data: rows,
@@ -64,9 +64,18 @@ app.post('/journal-entries', async (req, res) => {
   console.log('Request body:', req.body); // Log the request body for debugging
 
   const { user_id, entry_date, content, mood } = req.body;
+  console.log(req.body)
+
   if (!user_id || !entry_date || !content) {
     return res.status(400).json({ error: 'Missing required fields: user_id, entry_date, or content' });
   }
+  var response = '';
+  // try{
+  //   response = await axios.post ('http://localhost:5000/predict');   
+  // } catch(error){
+  //   // ignore erro for nt
+  // }
+
 
   const query = 'INSERT INTO journal_entries (user_id, entry_date, content, mood) VALUES (?, ?, ?, ?)';
   const params = [user_id, entry_date, content, mood];
@@ -78,7 +87,7 @@ app.post('/journal-entries', async (req, res) => {
     }
     res.json({
       message: 'Journal entry added successfully',
-      data: { id: this.lastID, user_id, entry_date, content, mood },
+      data: { response, user_id, entry_date, content, mood },
     });
   });
 });
