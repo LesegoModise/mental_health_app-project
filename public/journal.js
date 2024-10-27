@@ -31,7 +31,7 @@ document.addEventListener('alpine:init', () => {
 
                 
 
-                const response = await axios.post('/predict', {
+                const response = await axios.post('http://local/predict', {
                     statement: this.entry
                 })
 
