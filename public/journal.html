@@ -34,7 +34,7 @@
                     <div class="heading-head">Your Thoughts</div>
                     <textarea x-model="entry" placeholder="Write about your day..."></textarea>
                     <p></p>
-                    <button @click="saveEntry">Save Entry</button>
+                    <button type="button" @click.prevent="saveEntry">Save Entry</button>
                 </div>
             </div>
         </div>
