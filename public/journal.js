@@ -1,4 +1,5 @@
 document.addEventListener('alpine:init', () => {
+    
     Alpine.data('journalApp', () => ({
         mood: '',
         entry: '',
@@ -20,33 +21,37 @@ document.addEventListener('alpine:init', () => {
             }
         },
 
-        async saveEntry() {
+        async saveEntry(event) {
+            event.preventDefault()
             if (this.entry.trim()) {
-                const newEntry = {
-                    id: 'entry-' + Math.random().toString(36).substr(2, 9),
-                    mood: this.mood,
-                    content: this.entry,
-                    date: new Date().toLocaleString()
-                };
-
                 
-
-                const response = await axios.post('http://local/predict', {
+                const response = await axios.post('http://localhost:5000/predict', {
                     statement: this.entry
                 })
+                console.log('responds ',response)
 
-                const data = await axios.post('/journal-entries', newEntry );
+                const newEntry = {
+                    
+                        user_id: 1,
+                        entry_date: new Date().toLocaleString(),
+                        content: this.entry,
+                        mood: this.mood
+                
+                };
+
+
+                const data = await axios.post('http://localhost:4011/journal-entries', newEntry );
 
                 console.log('data', data.data)
                 console.log('predictions', response.data);
 
 
-                this.entries.push(newEntry);
-                this.saveToLocalStorage();
-                this.showAnalysis = true;
-                this.recommendations = this.analyzeEntry();
-                this.entry = ''; // Clear the entry field
-                // alert('Entry saved successfully!');
+                // this.entries.push(newEntry);
+                // this.saveToLocalStorage();
+                // this.showAnalysis = true;
+                // this.recommendations = this.analyzeEntry();
+                // this.entry = ''; // Clear the entry field
+                // // alert('Entry saved successfully!');
             } else {
                 alert('Please write something in your entry.');
             }
