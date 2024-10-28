@@ -1,70 +1,50 @@
-document.addEventListener('alpine:init', () => {
-    Alpine.data('journalApp', () => ({
-        moods: ['Sad', 'Angry', 'Emotional', 'Fine', 'Happy', 'Anxious'],
-        moodData: [],
-        chart: null,
+document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('moodChart').getContext('2d');
 
-        init() {
-            this.fetchMoods();
+    // Retrieve the stored mood data from localStorage
+    const moodData = JSON.parse(localStorage.getItem('moodData')) || [];
+
+    // Count the occurrences of each mood
+    const moodCounts = moodData.reduce((counts, entry) => {
+        counts[entry.mood] = (counts[entry.mood] || 0) + 1;
+        return counts;
+    }, {});
+
+    // Define the labels (moods) and data (counts)
+    const labels = ['happy', 'sad', 'angry', 'tired', 'neutral'];
+    const data = labels.map(mood => moodCounts[mood] || 0);
+
+    // Create the chart using Chart.js
+    const moodChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Mood Frequency',
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
         },
-
-        fetchMoods() {
-            axios.get('http://localhost:4011/api/moods')
-                .then(response => {
-                    console.log(response.data);
-                    this.moodData = response.data;
-                    this.updateChart();
-                })
-                .catch(error => {
-                    console.error('Error fetching moods:', error);
-                });
-        },
-        // Method to update the chart
-        updateChart() {
-            const moodCounts = this.moods.map(mood => this.moodData.filter(entry => entry.mood === mood).length);
-
-            // Destroy the existing chart before creating a new one
-            if (this.chart) {
-                this.chart.destroy();
-            }
-
-            this.createChart(moodCounts);
-        },
-
-        updateChart() {
-            const moodCounts = this.moods.map(mood =>
-                this.moodData.filter(entry => entry.mood === mood).length
-            );
-
-            if (this.chart) {
-                this.chart.data.datasets[0].data = moodCounts;
-                this.chart.update();
-            } else {
-                this.createChart(moodCounts);
-            }
-        },
-
-        createChart(moodCounts) {
-            const ctx = document.getElementById('moodChart').getContext('2d');
-            this.chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: this.moods,
-                    datasets: [{
-                        label: 'Mood Frequency',
-                        data: moodCounts,
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
-            });
+            }
         }
-    }));
+    });
 });
