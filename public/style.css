@@ -1,5 +1,6 @@
 body {
-font-family: Georgia, 'Times New Roman', Times, serif;}
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
 .heading {
     font-size: xx-large;
@@ -698,3 +699,22 @@ text-align: center;
     color: #0056b3; /* Darker blue on hover */
 }
 
+.termscondition {
+    background-color: grey;
+    height: 74vh;
+    border-radius: 10px;
+}
+
+.consent-heading {
+    font-weight: bolder;
+    font-size: xx-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.termsconditioncontent {
+    background-color: white;
+    height: 60vh;
+    width: 80em;
+    margin-left: 10em;
+}

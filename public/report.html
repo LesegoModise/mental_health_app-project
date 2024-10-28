@@ -39,6 +39,7 @@
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
         crossorigin="anonymous"></script>
     <script src="./dashboard.js"></script>
+    <script src="report.js"></script>
 </head>
 
 <body class="report-body container">
@@ -61,54 +62,27 @@
             </div>
             <br><br>
 
-            <div class="section" id="section1">
+            <div class="section" id="section1" x-data="report">
                 <h2 class="section-title">Daily Journals Overview</h2>
                 <table class="entry-table">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Entry Time</th>
+                            <th>User_id</th>
+                            <th>Entry Date</th>
+                            <th>Cotent</th>
                             <th>Mood</th>
-                            <th>Summary of Entry</th>
-                            <th>Mood Rating (1-10)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>September 1, 2024</td>
-                            <td>09:00 AM</td>
-                            <td>Happy</td>
-                            <td>Had a productive morning and felt energized.</td>
-                            <td>8</td>
-                        </tr>
-                        <tr>
-                            <td>September 2, 2024</td>
-                            <td>08:45 PM</td>
-                            <td>Anxious</td>
-                            <td>Felt overwhelmed with work responsibilities.</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>September 3, 2024</td>
-                            <td>07:30 PM</td>
-                            <td>Calm</td>
-                            <td>Enjoyed a peaceful evening walk and meditation.</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>September 4, 2024</td>
-                            <td>10:15 AM</td>
-                            <td>Stressed</td>
-                            <td>Had a difficult meeting that left me feeling drained.</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>September 5, 2024</td>
-                            <td>06:00 PM</td>
-                            <td>Content</td>
-                            <td>Spent time with friends, which lifted my mood significantly.</td>
-                            <td>7</td>
-                        </tr>
+                        <template x-for="data in data" :key="data.content">
+                            <tr>
+                                <td x-text="data.content"></td>
+                                <td x-text="data.user_id"></td>
+                                <td x-text="data.mood"></td>
+                                <td x-text="data.entry_date"></td>
+                            </tr>
+                        </template>
+                        
                     </tbody>
                 </table>
             </div>

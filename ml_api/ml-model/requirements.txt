@@ -6,3 +6,5 @@ scikit-learn
 imblearn
 joblib
 openpyxl
+flask
+flask_cors

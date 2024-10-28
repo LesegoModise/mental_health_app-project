@@ -2,14 +2,7 @@
 INSERT INTO users (username, email) VALUES ('eric_nkosi', 'eric.nkosi@gmail.com');
 
 -- Inserting sample journal entries
-INSERT INTO journal_entries (user_id, entry_date, content, mood)
-VALUES (1, '2024-10-14', 'Started the week feeling anxious about the week.', 'anxiety');
 
-INSERT INTO journal_entries (user_id, entry_date, content, mood)
-VALUES (1, '2024-10-15', 'Had a productive day working on my app.', 'Happy');
-
-INSERT INTO journal_entries (user_id, entry_date, content, mood)
-VALUES (1, '2024-10-16', 'Felt a bit stressed, but managed to handle it.', 'Depressed');
 
 INSERT INTO journal_entries (user_id, entry_date, content, mood)
 VALUES (1, '2024-10-17', 'i had a very hectic morning meeting, and my day was just all over the place.', 'anxiety');
@@ -34,3 +27,4 @@ GROUP BY user_id;
 
 INSERT INTO moods (user_id, mood) 
 VALUES (1, 'happy', 'sad', 'neutral', 'angry');
+
