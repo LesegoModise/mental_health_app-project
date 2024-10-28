@@ -1,18 +1,18 @@
-function cleanText(text) {
+// function cleanText(text) {
     
-    let cleanedText = text.toLowerCase();
-    
-    
-    cleanedText = cleanedText.replace(/[^a-z\s]/g, '');
+//     let cleanedText = text.toLowerCase();
     
     
-    const stopWords = ['the', 'is', 'in', 'and', 'a', 'to', 'it'];
-    cleanedText = cleanedText.split(' ').filter(word => !stopWords.includes(word)).join(' ');
+//     cleanedText = cleanedText.replace(/[^a-z\s]/g, '');
     
-    return cleanedText;
-}
+    
+//     const stopWords = ['the', 'is', 'in', 'and', 'a', 'to', 'it'];
+//     cleanedText = cleanedText.split(' ').filter(word => !stopWords.includes(word)).join(' ');
+    
+//     return cleanedText;
+// }
 
 
-const userInput = document.getElementById('userInput').value;
-const cleanedInput = cleanText(userInput);
-console.log(cleanedInput);  // Output: cleaned text ready for model analysis
+// const userInput = document.getElementById('userInput').value;
+// const cleanedInput = cleanText(userInput);
+// console.log(cleanedInput);  // Output: cleaned text ready for model analysis
