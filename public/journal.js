@@ -25,7 +25,7 @@ document.addEventListener('alpine:init', () => {
             // event.preventDefault()
             if (this.entry.trim()) {
                 
-                const response = await axios.post('http://localhost:5000/predict', {
+                const response = await axios.post('https://through-the-skull.onrender.com/predict', {
                     statement: this.entry
                 })
                 // console.log('responds ',response)
