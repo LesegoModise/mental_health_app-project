@@ -23,13 +23,13 @@ document.addEventListener('alpine:init', () => {
         },
 
         async saveEntry(event) {
-            event.preventDefault()
+            // event.preventDefault()
             if (this.entry.trim()) {
                 
                 const response = await axios.post('http://localhost:5000/predict', {
                     statement: this.entry
                 })
-                console.log('responds ',response)
+                // console.log('responds ',response)
 
                 const newEntry = {
                     
@@ -41,7 +41,7 @@ document.addEventListener('alpine:init', () => {
                 };
 
 
-                const data = await axios.post('http://localhost:4011/journal-entries', newEntry );
+                const data = await axios.post('/journal-entries', newEntry );
 
                 console.log('data', data.data)
                 console.log('predictions', response.data);

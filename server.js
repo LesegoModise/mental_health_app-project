@@ -28,7 +28,7 @@ await db.migrate();
 app.get('/journal-entries', async (req, res) => {
   try {
     const rows = await db.all('SELECT * FROM journal_entries LIMIT 5')
-       res.json({
+    res.json({
       message: 'Success',
       data: rows,
     });
@@ -64,7 +64,7 @@ app.post('/journal-entries', async (req, res) => {
   console.log('Request body:', req.body); // Log the request body for debugging
 
   const { user_id, entry_date, content, mood } = req.body;
-  console.log(req.body)
+  // console.log(req.body)
 
   if (!user_id || !entry_date || !content) {
     return res.status(400).json({ error: 'Missing required fields: user_id, entry_date, or content' });
@@ -80,16 +80,25 @@ app.post('/journal-entries', async (req, res) => {
   const query = 'INSERT INTO journal_entries (user_id, entry_date, content, mood) VALUES (?, ?, ?, ?)';
   const params = [user_id, entry_date, content, mood];
 
-  db.run(query, params, function (err) {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
+  try {
+    await db.run(query, params)
     res.json({
       message: 'Journal entry added successfully',
       data: { response, user_id, entry_date, content, mood },
     });
-  });
+  } catch (error) {
+    res.status(400).json({ error: err.message });
+  }
+  //   , function (err) {
+  //     if (err) {
+  //       res.status(400).json({ error: err.message });
+  //       return;
+  //     }
+  //     res.json({
+  //       message: 'Journal entry added successfully',
+  //       data: { response, user_id, entry_date, content, mood },
+  //     });
+  //   });
 });
 
 
