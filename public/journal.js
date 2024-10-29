@@ -33,7 +33,7 @@ document.addEventListener('alpine:init', () => {
                 const newEntry = {
                     
                         user_id: 1,
-                        entry_date: new Date().toLocaleString(),
+                        entry_date: new Date().toLocaleDateString(),
                         content: this.entry,
                         mood: this.mood
                 
