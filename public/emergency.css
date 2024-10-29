@@ -1,0 +1,49 @@
+.emergency-heading {
+    font-size: xx-large;
+    margin: 10px;
+    text-decoration: underline;
+}
+
+.subheading-emergency {
+    font-size: large;
+    font-weight: bolder;
+    text-decoration: underline;
+    line-height: 3.5;
+}
+
+.emergency-background {
+    background-image: url(./Cover.png);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.emergency-content {
+    background-color: white;
+    padding: 20px;
+    margin: 50px;
+    width: 94%;
+    height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.emergency-info {
+    background-color: rgb(208, 208, 208);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+}

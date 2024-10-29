@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" x-data="dashboard()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./admin_dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body x-init="init()">
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#user-management">User Management</a></li>
+                <li><a href="#appointments">Appointments</a></li>
+                <li><a href="#virtual-portal">Virtual Portal</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="overview">
+            <h2>Dashboard Overview</h2>
+            <div class="summary-cards">
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p id="total-users" x-text="totalUsers">100</p>
+                </div>
+                <div class="card">
+                    <h3>Upcoming Appointments</h3>
+                    <p id="upcoming-appointments" x-text="upcomingAppointments">5</p>
+                </div>
+                <div class="card">
+                    <h3>Engagement Trends</h3>
+                    <p id="engagement-trends" x-text="engagementTrends">Moderate</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="user-management">
+            <h2>User Management</h2>
+            <button @click="fetchUserReports">View User Reports</button>
+            <div id="user-reports" x-show="userReportsVisible" class="hidden">
+                <p x-text="userReports"></p>
+            </div>
+        </section>
+
+        <section id="appointments">
+            <h2>Appointments</h2>
+            <div id="appointments-calendar">
+                <p>Calendar will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="virtual-portal">
+            <h2>Virtual Therapy Portal</h2>
+            <button @click="joinSession">Join Virtual Session</button>
+            <p id="session-notes" x-text="sessionNotes"></p>
+        </section>
+
+        <section id="reports">
+            <h2>Reports & Analytics</h2>
+            <button @click="generateReport">Generate Report</button>
+        </section>
+
+        <section id="resources">
+            <h2>Resources Library</h2>
+            <button @click="viewResources">View Resources</button>
+        </section>
+
+        <section id="settings">
+            <h2>Settings</h2>
+            <button @click="openProfileSettings">Profile Settings</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name</p>
+    </footer>
+</body>
+</html>
