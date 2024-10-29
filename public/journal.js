@@ -40,18 +40,18 @@ document.addEventListener('alpine:init', () => {
                 };
 
 
-                const data = await axios.post('/journal-entries', newEntry );
+                const data = await axios.post('http://localhost:4011/journal-entries', newEntry );
 
                 console.log('data', data.data)
                 console.log('predictions', response.data);
 
 
-                // this.entries.push(newEntry);
-                // this.saveToLocalStorage();
-                // this.showAnalysis = true;
-                // this.recommendations = this.analyzeEntry();
-                // this.entry = ''; // Clear the entry field
-                // // alert('Entry saved successfully!');
+                this.entries.push(newEntry);
+                this.saveToLocalStorage();
+                this.showAnalysis = true;
+                this.recommendations = this.analyzeEntry();
+                this.entry = ''; // Clear the entry field
+                // alert('Entry saved successfully!');
             } else {
                 alert('Please write something in your entry.');
             }
