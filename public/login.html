@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
@@ -30,6 +30,13 @@
             <div class="card-body">
                 <form id="loginForm" @submit="submit">
                     <div class="mb-3">
+                        <label for="role" class="form-label">Login as:</label>
+                        <select id="role" class="form-control" x-model="role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username" placeholder="Enter username/email..." x-model="username">
                     </div>
@@ -49,7 +56,7 @@
                 </form>
 
                 <div x-show="errors.username || errors.password" class="alert alert-danger mt-3">
-                    <p x-text="errors.username"></p>
+                    <p x-text="errors.username || errors.password"></p>
                 </div>
             </div>
         </div>

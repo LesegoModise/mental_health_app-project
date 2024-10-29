@@ -1,6 +1,8 @@
-body {
-font-family: Georgia, 'Times New Roman', Times, serif;
-}
+/* body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} */
+
+
 
 .heading {
     font-size: xx-large;
@@ -18,12 +20,7 @@ font-family: Georgia, 'Times New Roman', Times, serif;
     /* font-weight: bolder; */
 }
 
-.subheading-emergency {
-    font-size: large;
-    font-weight: bolder;
-    text-decoration: underline;
-    line-height: 3.5;
-}
+
 
 textarea {
     padding: 9em;
@@ -282,7 +279,6 @@ label {
 }
 
 .journal-background,
-.emergency-background,
 .consent-background,
 .mood-background,
 .therapist-background {
@@ -298,7 +294,6 @@ label {
     padding: 1px;
 } */
 
-.emergency-content,
 .consent-content,
 .chart-content,
 .therapist-content {
@@ -329,8 +324,7 @@ label {
     text-align: center;
 }
 
-.journal-info,
-.emergency-info {
+.journal-info {
     background-color: rgb(208, 208, 208);
     position: relative;
     align-items: center;

@@ -6,7 +6,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             const isLoggedIn = localStorage.getItem('isLoggedIn');
             if (isLoggedIn) {
-                this.showPopover();
+                // this.showPopover();
                 this.successMessage = 'Welcome, Eric Nkosi!';
 
                 localStorage.removeItem('isLoggedIn');
@@ -39,11 +39,11 @@ document.addEventListener('alpine:init', () => {
             }, 5000);
         },
 
-        showPopover() {
-            $(document).ready(function() {
-                $('#profile-icon').popover('show');
-            });
-        },
+        // showPopover() {
+        //     $(document).ready(function() {
+        //         $('#profile-icon').popover('show');
+        //     });
+        // },
 
         navigateToMood_Selection() {
             window.location.href = './mood_selection.html';
