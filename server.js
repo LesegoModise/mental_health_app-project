@@ -94,7 +94,7 @@ app.post('/journal-entries', async (req, res) => {
       message: 'Journal entry added successfully',
       data: { response, user_id, entry_date, content, mood },
     });
-  } catch (error) {
+  } catch (err) {
     res.status(400).json({ error: err.message });
   }
   //   , function (err) {
