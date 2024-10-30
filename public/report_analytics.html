@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./chartData.js"></script>
+
+</head>
+<style>
+    .h6-mood {
+        font-size: 0.7rem;
+    }
+
+    .report {
+        background-image: url(./Cover.png);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .content {
+        background-color: rgb(208, 208, 208);
+
+    }
+
+    h5 {
+        text-align: center;
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+
+    .card-text {
+        text-align: center;
+    }
+</style>
+
+<body class="report">
+    <div class="container mt-5" x-data="chartData">
+        <div style="text-align: right;">
+            <a href="admin_dashboard.html" style="color: black;">BACK</a>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Predictions</h5>
+                <p class="card-text">Emotional Overview</p>
+                <div class="row text-center">
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: grey;">mood_bad</span>
+                            <p>Depressed</p>
+                            <h6 class="h6-mood" x-text="depressed.toLocaleString() + ' employees'"></h6>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: blue;">sentiment_very_dissatisfied</span>
+                            <p>Sad</p>
+                            <h6 class="h6-mood" x-text="sad.toLocaleString() + ' employees'"></h6>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: green;">sentiment_satisfied</span>
+                            <p>Happy</p>
+                            <h6 class="h6-mood" x-text="happy.toLocaleString() + ' employees'"></h6>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: yellow;">sentiment_neutral</span>
+                            <p>Neutral</p>
+                            <h6 class="h6-mood" x-text="neutral + ' employees'"></h6>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: red;">sentiment_very_dissatisfied</span>
+                            <p>Angry</p>
+                            <h6 class="h6-mood" x-text="angry.toLocaleString() + ' employees'"></h6>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: grey;">mood_bad</span>
+                            <p>Tired</p>
+                            <h6 class="h6-mood" x-text="tired.toLocaleString() + ' employees'"></h6>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3">
+                            <span class="material-icons" style="color: orange;">sentiment_dissatisfied</span>
+                            <p>Anxiety</p>
+                            <h6 class="h6-mood" x-text="anxiety.toLocaleString() + ' employees'"></h6>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <canvas id="barChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="pieChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

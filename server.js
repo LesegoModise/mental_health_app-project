@@ -8,21 +8,29 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(cors())
 
-const db = await sqlite.open({ //This open the database connection
+const db = await sqlite.open({ 
   filename: './data_plan.db',
   driver: sqlite3.Database
 });
 
 await db.migrate();
 
-// Connect to SQLite database
-// const db = new sqlite3.Database('./database.db', (err) => {
-//   if (err) {
-//     console.error('Error opening database:', err.message);
-//   } else {
-//     console.log('Connected to the SQLite database.');
-//   }
-// });
+// Fetch user reports for chart generation
+app.get('/api/user-reports', async (req, res) => {
+  try {
+    const reports = await db.all('SELECT mood, COUNT(*) as count FROM journal_entries GROUP BY mood');
+    const predictionCounts = reports.reduce((acc, report) => {
+      acc[report.mood] = report.count;
+      return acc;
+    }, {});
+
+    res.json({ reports: predictionCounts });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+
 
 // Example endpoint to fetch all journal entries
 app.get('/journal-entries', async (req, res) => {
@@ -63,7 +71,7 @@ app.post('/journal-entries', async (req, res) => {
 
   console.log('Request body:', req.body); // Log the request body for debugging
 
-  const { user_id, entry_date, content, mood } = req.body;
+  const { user_id, entry_date, content, mood, prediction } = req.body;
   // console.log(req.body)
 
   if (!user_id || !entry_date || !content) {
@@ -77,8 +85,8 @@ app.post('/journal-entries', async (req, res) => {
   // }
 
 
-  const query = 'INSERT INTO journal_entries (user_id, entry_date, content, mood) VALUES (?, ?, ?, ?)';
-  const params = [user_id, entry_date, content, mood];
+  const query = 'INSERT INTO journal_entries (user_id, entry_date, content, mood, prediction) VALUES (?, ?, ?, ?, ?)';
+  const params = [user_id, entry_date, content, mood, prediction];
 
   try {
     await db.run(query, params)
@@ -99,6 +107,15 @@ app.post('/journal-entries', async (req, res) => {
   //       data: { response, user_id, entry_date, content, mood },
   //     });
   //   });
+});
+
+app.get('/admin/journal-entries', async (req, res) => {
+  try {
+    const rows = await db.all('SELECT * FROM journal_entries');
+    res.json({ message: 'Success', data: rows });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 

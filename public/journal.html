@@ -18,9 +18,17 @@
 <script src="journal.js"></script>
 
 </head>
-
+<style>
+    .journal-background {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: black;
+    }
+</style>
 <body x-data="journalApp" class="journal-background">
     <section class="container journal-content">
+        <div style="text-align: right;">
+            <a href="dashboard.html" style="color: black;">BACK</a>
+        </div>
         <div class="journal-info">
             <div class="heading">DAILY JOURNAL</div>
             <div id="journalForm" class="form-section">

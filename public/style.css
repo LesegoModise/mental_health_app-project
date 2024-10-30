@@ -212,8 +212,9 @@ label {
 
 .dashboard-background {
     background-color: white;
-    padding: 20px;
-    margin: 50px;
+    padding: 15px;
+    padding-bottom: 0px;
+    margin: 30px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -280,7 +281,7 @@ label {
 
 .journal-background,
 .consent-background,
-.mood-background,
+/* .mood-background, */
 .therapist-background {
     background-image: url(./Cover.png);
     background-size: cover;
@@ -294,8 +295,6 @@ label {
     padding: 1px;
 } */
 
-.consent-content,
-.chart-content,
 .therapist-content {
     background-color: white;
     padding: 20px;
@@ -334,6 +333,19 @@ label {
     background-size: cover;
     width: 100%;
     height: 75vh;
+    overflow: hidden;
+}
+
+.therapist-info {
+    background-color: rgb(208, 208, 208);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-size: cover;
+    width: 100%;
+    height: 69vh;
     overflow: hidden;
 }
 
@@ -693,22 +705,27 @@ text-align: center;
     color: #0056b3; /* Darker blue on hover */
 }
 
-.termscondition {
-    background-color: grey;
-    height: 74vh;
-    border-radius: 10px;
+header {
+    /* background-color: rgb(208, 208, 208); */
+    /* color: white; */
+    /* padding: 10px 0; */
+    /* margin-top: ;     */
+    text-align: center;
 }
 
-.consent-heading {
-    font-weight: bolder;
-    font-size: xx-large;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
     color: black;
-}
+    text-decoration: none;
 
-.termsconditioncontent {
-    background-color: white;
-    height: 60vh;
-    width: 80em;
-    margin-left: 10em;
 }

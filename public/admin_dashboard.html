@@ -1,87 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" x-data="dashboard()">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="./admin_dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<script src="//unpkg.com/alpinejs" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="admin_dashboard.js" defer></script>
 </head>
-<body x-init="init()">
-    <header>
-        <h1>Admin Dashboard</h1>
-        <nav>
-            <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#user-management">User Management</a></li>
-                <li><a href="#appointments">Appointments</a></li>
-                <li><a href="#virtual-portal">Virtual Portal</a></li>
-                <li><a href="#reports">Reports</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#settings">Settings</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="overview">
-            <h2>Dashboard Overview</h2>
-            <div class="summary-cards">
-                <div class="card">
-                    <h3>Total Users</h3>
-                    <p id="total-users" x-text="totalUsers">100</p>
+<body class="dashboard" x-data="admin">
+
+    <div class="container-fluid">
+        <div class="row">
+            <section class="container dashboard-background">
+                <header>
+                    <nav>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <!-- <li><a href="#user-management">User Management</a></li> -->
+                            <li><a href="#appointments">Appointments</a></li>
+                            <li><a href="#virtual-portal">Virtual Portal</a></li>
+                            <!-- <li><a href="#reports">Reports</a></li> -->
+                            <li><a href="#resources">Resources</a></li>
+                            <li><a href="#settings">Settings</a></li>
+                            <li><a href="./login.html">Logout</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="content-background">
+                    <!-- <h1>WELCOME, CYNTHIA</h1> -->
+                    <div class="dashboard-content">
+                        <img src="./logo.png" alt="Through the Skull" class="logo-dashboard">
+                        <div class="buttons">
+                            <button class="btn btn-secondary selection"><a href="user_reports.html" style="color: black;">USER REPORTS</a></button>
+                            <button class="btn btn-secondary selection"><a href="report_analytics.html" style="color: black;">COMPANY REPORT</a></button>                            
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Upcoming Appointments</h3>
-                    <p id="upcoming-appointments" x-text="upcomingAppointments">5</p>
-                </div>
-                <div class="card">
-                    <h3>Engagement Trends</h3>
-                    <p id="engagement-trends" x-text="engagementTrends">Moderate</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="user-management">
-            <h2>User Management</h2>
-            <button @click="fetchUserReports">View User Reports</button>
-            <div id="user-reports" x-show="userReportsVisible" class="hidden">
-                <p x-text="userReports"></p>
-            </div>
-        </section>
-
-        <section id="appointments">
-            <h2>Appointments</h2>
-            <div id="appointments-calendar">
-                <p>Calendar will be displayed here.</p>
-            </div>
-        </section>
-
-        <section id="virtual-portal">
-            <h2>Virtual Therapy Portal</h2>
-            <button @click="joinSession">Join Virtual Session</button>
-            <p id="session-notes" x-text="sessionNotes"></p>
-        </section>
-
-        <section id="reports">
-            <h2>Reports & Analytics</h2>
-            <button @click="generateReport">Generate Report</button>
-        </section>
-
-        <section id="resources">
-            <h2>Resources Library</h2>
-            <button @click="viewResources">View Resources</button>
-        </section>
-
-        <section id="settings">
-            <h2>Settings</h2>
-            <button @click="openProfileSettings">Profile Settings</button>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Your Company Name</p>
-    </footer>
+            </section>
+            <footer style="text-align: center; color: black;">
+                <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+                </footer>
+        </div>
+    </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>

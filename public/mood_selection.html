@@ -19,7 +19,12 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="mood.js"></script>
 </head>
-
+<style>
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: black;
+    }
+</style>
 <body x-data="moodTracker()" class="mood-background">
 
     <section class="container mood-content">
@@ -37,11 +42,12 @@
         <div class="skip-link-container">
             <a href="dashboard.html" class="skip-link">Skip</a> 
         </div>
+
+        <footer style="text-align: center; color: black; margin-top: 30px;">
+            <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+        </footer>
     </section>
 
-    <footer style="text-align: center; color: black;">
-        <p>&copy; 2024 Through The Skull. All rights reserved.</p>
-    </footer>
 
 </body>
 

@@ -11,18 +11,29 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="chart.js" defer></script>
 </head>
-
+<style>
+    .mood-background {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: black;
+    }
+</style>
 <body class="mood-background">
 
+    
     <section class="container mood-content">
+
+        <div style="text-align: right;">
+            <a href="dashboard.html" style="color: black;">BACK</a>
+        </div>
+
         <div class="mood-title">Your Mood History</div>
         <canvas id="moodChart"></canvas>
 
+        <footer style="text-align: center; color: black; margin-top: 20px; margin-bottom: -35px;">
+            <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+        </footer>
     </section>
 
-    <footer style="text-align: center; color: black;">
-        <p>&copy; 2024 Through The Skull. All rights reserved.</p>
-    </section>
 
 </body>
 

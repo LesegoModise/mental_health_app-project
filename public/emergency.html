@@ -18,13 +18,15 @@
 
 <body class="emergency-background">
 
-    <section class="container emergency-content text-center">
-
+    <section class="container emergency-content ">
+        <div style="text-align: right;">
+            <a href="dashboard.html" style="color: black;">BACK</a>
+        </div>
         <div class="emergency-info">
 
             <header class="mb-4">
                 <div class="emergency-heading">EMERGENCY SUPPORT</div>
-                <p>Our top priority is your well-being. We are here to support you if you're feeling overwhelmed.</p>
+                <p>Your well-being is our top priority. If you're feeling overwhelmed, remember you’re not alone—we’re here to offer the support and understanding you need.</p>
             </header>
             <main x-data="emergencyApp">
                 <div>
@@ -33,42 +35,40 @@
                         through
                         a
                         mental health crisis.</p>
-                    <ul>
-                        <li><strong>Emergency Hotline:</strong> 011 098 6789</li>
-                        <li><strong>Crisis Text Line:</strong> Text HELP to 56478</li>
-                    </ul>
+                    <div><strong>Emergency Hotline:</strong> <a href="call:011 098 6789">011 098 6789</a></div>
+                    <div><strong>Crisis Text Line:</strong> Text "HELP" to <a href="text:56478">56478</a></div>
+
                 </div>
-                <div
-                x-data="{ 
+                <!-- <div x-data="{ 
                     tips: ['Take deep breaths', 'Try meditation or mindfulness', 'Engage in physical activity', 'Connect with friends or family', 'Write down your thoughts'],
                     showTips: false 
                 }">
-                <div class="subheading-emergency">Self-Care Tips</div>
-                <button @click="showTips = !showTips">
-                    <span x-text="showTips ? 'Hide' : 'Show'"></span> Self-Care Tips
-                </button>
-                <ul x-show="showTips" class="self-care-tips" style="margin-top: 10px;">
-                    <template x-for="tip in tips" :key="tip">
-                        <li x-text="tip" class="tip-item"></li>
-                    </template>
-                </ul>
-            </div>
-            
+                    <div class="subheading-emergency">Self-Care Tips</div>
+                    <button @click="showTips = !showTips">
+                        <span x-text="showTips ? 'Hide' : 'Show'"></span> Self-Care Tips
+                    </button>
+                    <ul x-show="showTips" class="self-care-tips" style="margin-top: 10px;">
+                        <template x-for="tip in tips" :key="tip">
+                            <li x-text="tip" class="tip-item"></li>
+                        </template>
+                    </ul>
+                </div> -->
+
                 <div>
                     <div class="subheading-emergency">Contact Us</div>
                     <p>Please get in touch with our support team if you need to chat to someone about your mental health
                         at work:</p>
                     <address>
-                        <p>Email: <a href="mailto:support@throughtheSkull.com">support@throughtheSkull.com</a></p>
-                        <p>Phone: 011 098 6789</p>
+                        <div>Phone: <a href="tel:0820551646">087 098 6789</a></div>
+                        <div>Email: <a href="mailto:cynthiagenaro@gmail.com">cynthiagenaro@gmail.com</a></div>
                     </address>
                 </div>
             </main>
         </div>
+        <footer style="text-align: center; color: black;">
+            <p>&copy; 2024 Through The Skull. All rights reserved.</p>
+        </footer>
     </section>
 
-    <footer style="text-align: center; color: black;">
-        <p>&copy; 2024 Through The Skull. All rights reserved.</p>
-    </footer>
 
 </html>

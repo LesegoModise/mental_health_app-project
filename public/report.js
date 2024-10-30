@@ -12,7 +12,7 @@ document.addEventListener('alpine:init', () => {
         async  getEntries() {
             console.log('getEntries')
             try {
-                const response = await fetch('http://localhost:4011/journal-entries');
+                const response = await fetch('/journal-entries');
                 const data = await response.json();
                 this.data = data.data
                 console.log(data.data); // Display the data in the console
